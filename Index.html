@@ -1,0 +1,722 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHA Training Dashboard | DHA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-sans" style="background-color: #e6f5f3;">
+<!-- Tailwind CSS -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- Header -->
+<header class="bg-white shadow-md py-2 px-4 flex items-center justify-between sticky top-0 z-30">
+  <!-- Left Logo -->
+  <div class="flex items-center">
+    <img src="DG-logo.png" alt="DG-logo" class="h-10">
+  </div>
+  <!-- Navigation -->
+  <nav class="flex-1">
+    <ul class="flex gap-4 text-gray-700 font-medium justify-center items-center">
+      <li class="relative" id="trainingDeliveryMenu">
+        <button type="button" id="trainingDeliveryBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Training Delivery
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="trainingDeliveryDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="new-hire-training.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">New Hire Training</a></li>
+          <li><a href="continues-education.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Continues Education</a></li>
+          <li><a href="product-knowledge.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">PKT</a></li>
+        </ul>
+      </li>
+      <li><a href="training-initiatives.html" class="hover:text-[#009490]">Training Initiatives</a></li>
+      <li><a href="training-analysis.html" class="hover:text-[#009490]">TNA</a></li>
+      <li><a href="trainee profile.html" class="hover:text-[#009490]">Trainee Profile</a></li>
+      <li><a href="training forms.html" class="hover:text-[#009490]">Training Forms</a></li>
+      <li class="relative" id="trainingCurriculumsMenu">
+        <button type="button" id="trainingCurriculumsBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Training Curriculums
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="trainingCurriculumsDropdown" class="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="#" class="block px-4 py-2 font-semibold text-gray-700 cursor-default">Soft Skills (GDCCS)</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Product Knowledge</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Operating Systems</a></li>
+        </ul>
+      </li>
+      <li class="relative" id="knowledgeManagementMenu">
+        <button type="button" id="knowledgeManagementBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Knowledge Management
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="knowledgeManagementDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="update-tracker.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Update Tracker</a></li>
+          <li><a href="content-creation.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Content Creation</a></li>
+          <li><a href="knowledge-hub-index.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Knowledge Hub Index</a></li>
+          <li><a href="bo-meeting-tracker.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">BO Meeting Tracker</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+      <!-- Right Logo -->
+  <div class="flex items-center">
+    <img src="DHA-logo.svg" alt="Green Logo" class="h-10">
+  </div>
+</header>
+
+  <!-- Main Dashboard Section -->
+  <main class="p-6">
+    <!-- Filter and Download Buttons Row (same line, top of dashboard) -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2 gap-4">
+      <!-- Filter Section (left, vertically centered) -->
+      <div class="flex items-center gap-2 md:mb-0 mb-2">
+        <label for="dashboardDay" class="font-semibold text-gray-700 mr-2">Filter by Date:</label>
+        <select id="dashboardMonth" class="border rounded px-2 py-1">         
+          <option value="01">Jan</option>
+          <option value="02">Feb</option>
+          <option value="03">Mar</option>
+          <option value="04">Apr</option>
+          <option value="05">May</option>
+          <option value="06">Jun</option>
+          <option value="07">Jul</option>
+          <option value="08">Aug</option>
+          <option value="09">Sep</option>
+          <option value="10">Oct</option>
+          <option value="11">Nov</option>
+          <option value="12">Dec</option>
+        </select>
+        <input type="number" id="dashboardYear" min="2020" max="2100" placeholder="Year" class="border rounded px-2 py-1 w-20" />
+        <select id="dateType" class="border rounded px-2 py-1">
+          <option value="mtd">MTD</option>
+          <option value="ytd">YTD</option>
+        </select>
+      </div>
+      <!-- Download Buttons Row (right, now green) -->
+      <div class="flex flex-col items-end">
+        <div class="flex gap-2 mb-1">
+          <button onclick="downloadYBR()" class="bg-black black-700 hover:bg-green-700 text-white px-3 py-1 rounded text-sm shadow">Extract YBR PPT</button>
+          <button onclick="downloadQBR()" class="bg-black green-700 hover:bg-green-700 text-white px-3 py-1 rounded text-sm shadow">Extract QBR PPT</button>
+          <button onclick="downloadMBR()" class="bg-black green-700 hover:bg-green-700 text-white px-3 py-1 rounded text-sm shadow">Extract MBR PPT</button>
+        </div>
+        <span id="dateFilterInfo" class="block text-gray-500 text-sm">Showing data for: 30/2025 - Month to Date (MTD)</span>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Dashboard Overview</h2>
+
+    <!-- Cards Section -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+      <div class="bg-white p-4 rounded-2xl shadow-md">
+        <p class="text-sm text-gray-500">New Hire Trainees</p>
+        <h3 id="newHireCount" class="text-2xl font-bold text-gray-800">13</h3>
+        <p class="text-xs mt-2 text-gray-600">
+          <span class="block"><span class="font-semibold">Batch 84:</span> Completed 100% Pass</span>
+          <span class="block"><span class="font-semibold">Batch 85:</span> In Progress</span>
+          <span class="block"><span class="font-semibold">Batch 86:</span> In Progress</span>
+        </p>
+      </div>
+      <div class="bg-white p-4 rounded-2xl shadow-md">
+        <p class="text-sm text-gray-500">Continues Education</p>
+        <h3 id="continuesEdCount" class="text-2xl font-bold text-gray-800">152</h3>
+        <p class="text-xs mt-2 text-gray-600">
+          <span class="block"><span class="font-semibold">Targeted HC:</span> 165</span>
+          <span class="block"><span class="font-semibold">Fulfillment:</span> 152</span>
+        </p>
+      </div>
+      <div class="bg-white p-4 rounded-2xl shadow-md">
+        <p class="text-sm text-gray-500">Product Test Pass Rate</p>
+        <h3 id="productTestCount" class="text-2xl font-bold text-gray-700">98%</h3>
+        <p class="text-xs mt-1">
+          <span class="font-semibold">Passing Score (Agents &amp; TLs):</span> 95%<br>
+          <span class="font-semibold">Passing Score (Trainers &amp; QAs):</span> 100%
+        </p>
+      </div>
+      <div class="bg-white p-4 rounded-2xl shadow-md">
+        <p class="text-sm text-gray-500">TNA Completion</p>
+        <h3 id="tnaCount" class="text-2xl font-bold text-gray-800">16%</h3>
+        <p class="text-xs mt-1">
+          <span class="text-gray-600 font-semibold">Define phase: Completed</span><br>
+          <span class="text-gray-600 font-semibold">Measuring phase: In Progress</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+      <!-- New Hire Pie Chart -->
+      <div class="bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
+        <h3 class="text-base font-semibold text-gray-800 mb-2 text-center">New Hire Completion</h3>
+        <canvas id="pieNewHire" width="120" height="120"></canvas>
+        <div class="mt-2 text-blue-700 font-bold text-lg">65%</div>
+      </div>
+      <!-- Continues Education Pie Chart -->
+      <div class="bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
+        <h3 class="text-base font-semibold text-gray-800 mb-2 text-center">Continues Education</h3>
+        <canvas id="pieContinuesEd" width="120" height="120"></canvas>
+        <div class="mt-2 text-green-700 font-bold text-lg">72%</div>
+      </div>
+      <!-- Product Test Pie Chart -->
+      <div class="bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
+        <h3 class="text-base font-semibold text-gray-800 mb-2 text-center">Product Test Pass Rate</h3>
+        <canvas id="pieProductTest" width="120" height="120"></canvas>
+        <div class="mt-2 text-gray-800 font-bold text-lg">98%</div>
+      </div>
+      <!-- TNA Pie Chart -->
+      <div class="bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
+        <h3 class="text-base font-semibold text-gray-800 mb-2 text-center">TNA Completion</h3>
+        <canvas id="pieTNA" width="120" height="120"></canvas>
+        <div class="mt-2 text-gray-600 font-bold text-lg">16%</div>
+      </div>
+    </div>
+
+    <!-- Monthly Best Score Achievement & Monthly GDCCS Score Achievement Side by Side -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div class="bg-white p-6 rounded-2xl shadow-md mt-4">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Monthly <span style="letter-spacing:1px;">BEST</span> Score Achievement</h3>
+        <canvas id="runChart" height="80"></canvas>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-md mt-4">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Monthly <span style="letter-spacing:1px;">GDCCS</span> Score Achievement</h3>
+        <canvas id="runChartGDCCS" height="80"></canvas>
+      </div>
+    </div>
+
+    <!-- Monthly Review Score Achievement & Monthly Training Observation Score Achievement Side by Side -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <!-- Monthly Review Score Achievement -->
+      <div class="bg-white p-6 rounded-2xl shadow-md mt-4">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Monthly <span style="letter-spacing:1px;">Review</span> Score</h3>
+        <canvas id="runChartReview" height="80"></canvas>
+      </div>
+      <!-- Monthly Training Observation Score Achievement -->
+      <div class="bg-white p-6 rounded-2xl shadow-md mt-4">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Training <span style="letter-spacing:1px;">Observation</span> Score</h3>
+        <canvas id="runChartObservation" height="80"></canvas>
+      </div>
+    </div>
+  </main>
+
+  <!-- Move script to just before </body> -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script>
+    // Example: Add this at the top of your <script> in Index.html
+    const continuesEducationTrainees = [
+      { name: "Rabia Ashraf", status: "Completed" },
+      { name: "Muna Ismail", status: "Completed" },
+      { name: "Sadaf Parveen", status: "Completed" },
+      { name: "Jomy Jose", status: "In Progress" },
+      { name: "Aisha Taranum", status: "Completed" },
+      { name: "Detcy Sara John", status: "Completed" },
+      { name: "Lynette Leslie Coutinho", status: "Completed" },
+      { name: "Mohamed Ibrahim", status: "Completed" },
+      { name: "Muna Ismail", status: "In Progress" },
+      { name: "Rabia Ashraf", status: "Completed" },
+      { name: "Reem Khalil Ali Al Qassab", status: "In Progress" },
+      { name: "Sadaf Parveen", status: "Completed" }
+      
+      // ... add all trainees from continues-education.html here ...
+    ];
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Cache DOM elements
+      const dashboardDay = document.getElementById('dashboardDay');
+      const dashboardMonth = document.getElementById('dashboardMonth');
+      const dashboardYear = document.getElementById('dashboardYear');
+      const dateType = document.getElementById('dateType');
+      const dateFilterInfo = document.getElementById('dateFilterInfo');
+      const newHireCount = document.getElementById('newHireCount');
+      // ...cache other frequently used elements...
+
+      // Chart rendering (only if canvas exists)
+      function safeCreatePieChart(canvasId, percent, color, bgColor="#e5e7eb") {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ['Completed', 'Remaining'],
+            datasets: [{
+              data: [percent, 100 - percent],
+              backgroundColor: [color, bgColor],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: false,
+            plugins: { legend: { display: false } },
+            cutout: '0%'
+          }
+        });
+      }
+
+      safeCreatePieChart('pieNewHire', 65, '#009490');
+
+      // Calculate fulfillment percentage
+      const continuesEdTarget = 165;
+      const continuesEdFulfillment = 152;
+      const continuesEdPercent = Math.round((continuesEdFulfillment / continuesEdTarget) * 100);
+
+      // Update the pie chart call:
+      safeCreatePieChart('pieContinuesEd', continuesEdPercent, '#009490');
+      safeCreatePieChart('pieProductTest', 98, '#009490'); // 98% and green color
+      safeCreatePieChart('pieTNA', 16, '#009490');
+
+      // Helper: Get 6 months labels, with current month as last achieved, next month as pending, rest as previous
+      function getSixMonthsLabels() {
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const now = new Date();
+        let current = now.getMonth(); // 0-based
+        let labels = [];
+        // 4 previous, 1 current, 1 next
+        for (let i = -4; i <= 1; i++) {
+          let idx = (current + i + 12) % 12;
+          labels.push(monthNames[idx]);
+        }
+        return labels;
+      }
+
+      // Example data for each chart (adjust as needed)
+      const bestData = [68, 69, 70, 70, 70, null]; // last value (next month) is pending
+      const gdccsData = [96.30, 96.70, 96.70, 97, null];
+      const reviewData = [78, 79, 80, 82, 81, null];
+      const observationData = [83, 84, 85, 87, 86, null];
+      const evaluationData = [89, 90, 91, 91, 92, null];
+
+      const labels = getSixMonthsLabels();
+
+      // Monthly BEST Score Achievement
+      const runChartCtx = document.getElementById('runChart').getContext('2d');
+      new Chart(runChartCtx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'BEST Score',
+              data: bestData,
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16,185,129,0.1)',
+              tension: 0.3,
+              pointBackgroundColor: '#10B981',
+              pointBorderColor: '#10B981',
+              fill: true,
+              spanGaps: false
+            },
+            {
+              label: 'Target (>=70%)',
+              data: Array(6).fill(70),
+              borderColor: '#F59E42',
+              borderDash: [8, 4],
+              pointRadius: 0,
+              fill: false,
+              type: 'line'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 50,
+              max: 90,
+              title: { display: true, text: 'Score (%)' }
+            },
+            x: {
+              title: { display: true, text: 'Month' }
+            }
+          }
+        }
+      });
+
+      // Monthly GDCCS Score Achievement
+      const runChartGDCCSCtx = document.getElementById('runChartGDCCS').getContext('2d');
+      new Chart(runChartGDCCSCtx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'GDCCS Score',
+              data: gdccsData,
+              borderColor: '#6366F1',
+              backgroundColor: 'rgba(99,102,241,0.1)',
+              tension: 0.3,
+              pointBackgroundColor: '#6366F1',
+              pointBorderColor: '#6366F1',
+              fill: true,
+              spanGaps: false
+            },
+            {
+              label: 'Target (>=90%)',
+              data: Array(labels.length).fill(90), // Target line at 90%
+              borderColor: '#F59E42',
+              borderDash: [8, 4],
+              pointRadius: 0,
+              fill: false,
+              type: 'line'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 85,
+              max: 100,
+              title: { display: true, text: 'Score (%)' }
+            },
+            x: {
+              title: { display: true, text: 'Month' }
+            }
+          }
+        }
+      });
+
+      // Monthly Review Score Achievement
+      const runChartReviewCtx = document.getElementById('runChartReview').getContext('2d');
+      new Chart(runChartReviewCtx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Review Score',
+              data: reviewData,
+              borderColor: '#F59E42',
+              backgroundColor: 'rgba(245,158,66,0.1)',
+              tension: 0.3,
+              pointBackgroundColor: '#F59E42',
+              pointBorderColor: '#F59E42',
+              fill: true,
+              spanGaps: false
+            },
+            {
+              label: 'Target (>=80%)',
+              data: Array(6).fill(80),
+              borderColor: '#6366F1',
+              borderDash: [8, 4],
+              pointRadius: 0,
+              fill: false,
+              type: 'line'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 70,
+              max: 100,
+              title: { display: true, text: 'Score (%)' }
+            },
+            x: {
+              title: { display: true, text: 'Month' }
+            }
+          }
+        }
+      });
+
+      // Training Observation Score Achievement
+      const runChartObservationCtx = document.getElementById('runChartObservation').getContext('2d');
+      new Chart(runChartObservationCtx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Observation Score',
+              data: observationData,
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16,185,129,0.1)',
+              tension: 0.3,
+              pointBackgroundColor: '#10B981',
+              pointBorderColor: '#10B981',
+              fill: true,
+              spanGaps: false
+            },
+            {
+              label: 'Target (>=85%)',
+              data: Array(6).fill(85),
+              borderColor: '#F59E42',
+              borderDash: [8, 4],
+              pointRadius: 0,
+              fill: false,
+              type: 'line'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 75,
+              max: 100,
+              title: { display: true, text: 'Score (%)' }
+            },
+            x: {
+              title: { display: true, text: 'Month' }
+            }
+          }
+        }
+      });
+
+      // Event delegation for dropdowns
+      document.querySelector('nav').addEventListener('click', function (e) {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const dropdownId = btn.id.replace('Btn', 'Dropdown');
+        const dropdown = document.getElementById(dropdownId);
+        if (dropdown) {
+          dropdown.classList.toggle('hidden');
+          e.stopPropagation();
+        }
+      });
+
+      // Hide dropdowns when clicking outside
+      document.addEventListener('click', function (e) {
+        document.querySelectorAll('ul[id$="Dropdown"]').forEach(dropdown => {
+          if (!dropdown.contains(e.target)) dropdown.classList.add('hidden');
+        });
+      });
+
+      // Date filter logic (cached elements)
+      function updateDateFilterInfo() {
+        let dateStr = '';
+        if (dashboardDay.value) dateStr += dashboardDay.value.padStart(2, '0') + '/';
+        if (dashboardMonth.value) dateStr += dashboardMonth.value + '/';
+        if (dashboardYear.value) dateStr += dashboardYear.value;
+        let typeLabel = dateType.value === 'mtd' ? 'Month to Date (MTD)' : 'Year to Date (YTD)';
+        if (dateStr) {
+          dateFilterInfo.textContent = `Showing data for: ${dateStr} - ${typeLabel}`;
+          newHireCount.textContent = '13';
+        } else {
+          dateFilterInfo.textContent = '';
+        }
+      }
+      dashboardDay.addEventListener('input', updateDateFilterInfo);
+      dashboardMonth.addEventListener('change', updateDateFilterInfo);
+      dashboardYear.addEventListener('input', updateDateFilterInfo);
+      dateType.addEventListener('change', updateDateFilterInfo);
+
+      // Dummy download functions (replace with real logic or file links)
+      function downloadYBR() {
+        alert('Download YBR PPT triggered!');
+        // window.location.href = 'path/to/ybr-ppt-file.pptx';
+      }
+      function downloadQBR() {
+        alert('Download QBR PPT triggered!');
+        // window.location.href = 'path/to/qbr-ppt-file.pptx';
+      }
+      function downloadMBR() {
+        alert('Download MBR PPT triggered!');
+        // window.location.href = 'path/to/mbr-ppt-file.pptx';
+      }
+
+      // Dropdown logic for Training Delivery
+      const btn = document.getElementById('trainingDeliveryBtn');
+      const dropdown = document.getElementById('trainingDeliveryDropdown');
+      const menu = document.getElementById('trainingDeliveryMenu');
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('hidden');
+      });
+
+      // Dropdown logic for Training Curriculums
+      const tcBtn = document.getElementById('trainingCurriculumsBtn');
+      const tcDropdown = document.getElementById('trainingCurriculumsDropdown');
+      const tcMenu = document.getElementById('trainingCurriculumsMenu');
+
+      tcBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        tcDropdown.classList.toggle('hidden');
+      });
+
+      // Dropdown logic for Product Knowledge
+      const pkBtn = document.getElementById('productKnowledgeBtn');
+      const pkDropdown = document.getElementById('productKnowledgeDropdown');
+      const pkMenu = document.getElementById('productKnowledgeMenu');
+
+      pkBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        pkDropdown.classList.toggle('hidden');
+      });
+
+      // Dropdown logic for Operating Systems
+      const osBtn = document.getElementById('operatingSystemsBtn');
+      const osDropdown = document.getElementById('operatingSystemsDropdown');
+      const osMenu = document.getElementById('operatingSystemsMenu');
+
+      osBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        osDropdown.classList.toggle('hidden');
+      });
+
+      // Dropdown logic for Knowledge Management
+      const kmBtn = document.getElementById('knowledgeManagementBtn');
+      const kmDropdown = document.getElementById('knowledgeManagementDropdown');
+      const kmMenu = document.getElementById('knowledgeManagementMenu');
+
+      kmBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        kmDropdown.classList.toggle('hidden');
+      });
+
+      // Hide dropdowns when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) {
+          dropdown.classList.add('hidden');
+        }
+        if (!tcMenu.contains(e.target)) {
+          tcDropdown.classList.add('hidden');
+        }
+        if (!pkMenu.contains(e.target)) {
+          pkDropdown.classList.add('hidden');
+        }
+        if (!osMenu.contains(e.target)) {
+          osDropdown.classList.add('hidden');
+        }
+        if (!kmMenu.contains(e.target)) {
+          kmDropdown.classList.add('hidden');
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        // Cache DOM elements for performance
+        const directorySection = document.getElementById('directorySection');
+        const profileSection = document.getElementById('profileSection');
+        const profileName = document.getElementById('profileName');
+        const profileDept = document.getElementById('profileDept');
+        const profileImage = document.getElementById('profileImage');
+        const profileEmail = document.getElementById('profileEmail');
+        const profileJoin = document.getElementById('profileJoin');
+        const profileID = document.getElementById('profileID');
+        const profileBio = document.getElementById('profileBio');
+        const profileCSAT = document.getElementById('profileCSAT');
+        const profileAHT = document.getElementById('profileAHT');
+        const profileQA = document.getElementById('profileQA');
+        const profileANS = document.getElementById('profileANS');
+        const traineeGrid = document.getElementById('traineeGrid');
+        const traineeForm = document.getElementById('traineeForm');
+
+        function showProfile(name, dept, image, email, join, empID, bio, csat = '--', aht = '--', qa = '--', ans = '--') {
+          directorySection.classList.add('hidden');
+          profileSection.classList.remove('hidden');
+          profileName.textContent = name;
+          profileDept.textContent = dept;
+          profileImage.src = image;
+          profileEmail.textContent = `Email: ${email}`;
+          profileJoin.textContent = `Join Date: ${join}`;
+          profileID.textContent = `Employee ID: ${empID}`;
+          profileBio.textContent = bio;
+          profileCSAT.textContent = csat;
+          profileAHT.textContent = aht;
+          profileQA.textContent = qa;
+          profileANS.textContent = ans;
+        }
+
+        // Clear grid before populating to avoid duplicates
+        traineeGrid.innerHTML = '';
+        initialTrainees.forEach(t => {
+          const card = document.createElement('div');
+          card.className = "bg-white rounded-xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition cursor-pointer";
+          card.innerHTML = `
+            <img src="${t.image}" alt="${t.name}" class="w-24 h-24 rounded-full border mb-3">
+            <h3 class="text-base font-semibold text-gray-800">${t.name}</h3>
+            <p class="text-sm text-gray-600">${t.dept}</p>
+          `;
+          card.onclick = () => showProfile(t.name, t.dept, t.image, t.email, t.join, t.empID, t.bio, t.csat, t.aht, t.qa, t.ans);
+          traineeGrid.appendChild(card);
+        });
+
+        function addTrainee() {
+          const name = document.getElementById('traineeName').value;
+          const dept = document.getElementById('traineeDept').value;
+          const imageInput = document.getElementById('traineeImage');
+          const email = document.getElementById('traineeEmail').value;
+          const join = document.getElementById('traineeJoin').value;
+          const empID = document.getElementById('traineeID').value;
+          const bio = document.getElementById('traineeBio').value;
+
+          if (imageInput.files && imageInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const imageSrc = e.target.result;
+              const card = document.createElement('div');
+              card.className = "bg-white rounded-xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition cursor-pointer";
+              card.innerHTML = `
+                <img src="${imageSrc}" alt="${name}" class="w-24 h-24 rounded-full border mb-3">
+                <h3 class="text-base font-semibold text-gray-800">${name}</h3>
+                <p class="text-sm text-gray-600">${dept}</p>
+              `;
+              card.onclick = () => showProfile(name, dept, imageSrc, email, join, empID, bio, '--', '--', '--', '--');
+              traineeGrid.appendChild(card);
+              traineeForm.reset();
+              toggleForm();
+            };
+            reader.readAsDataURL(imageInput.files[0]);
+          }
+        }
+      });
+    });
+
+    function updateContinuesEducationStats() {
+      // If you want unique names as Targeted HC:
+      const uniqueNames = new Set(continuesEducationTrainees.map(t => t.name));
+      const targetedHC = uniqueNames.size;
+
+      // If you want all rows as Targeted HC (including duplicates), use:
+      // const targetedHC = continuesEducationTrainees.length;
+
+      // Fulfillment: count of completed agents (unique names with at least one "Completed" status)
+      const completedNames = new Set(
+        continuesEducationTrainees
+          .filter(t => t.status.trim().toLowerCase() === "completed")
+          .map(t => t.name)
+      );
+      const fulfillment = completedNames.size;
+
+      // Completion percentage
+      const completionPercent = targetedHC > 0 ? Math.round((fulfillment / targetedHC) * 100) : 0;
+
+      // Update widget numbers
+      document.getElementById('continuesEdCount').textContent = fulfillment;
+      document.querySelector('#continuesEdCount').parentElement.querySelector('.text-xs').innerHTML = `
+        <span class="block"><span class="font-semibold">Targeted HC:</span> ${targetedHC}</span>
+        <span class="block"><span class="font-semibold">Fulfillment:</span> ${fulfillment}</span>
+      `;
+
+      // Update pie chart
+      safeCreatePieChart('pieContinuesEd', completionPercent, '#009490');
+    }
+
+    // Call this after DOMContentLoaded and after safeCreatePieChart is defined
+    updateContinuesEducationStats();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Continues Education | DHA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-sans" style="background-color: #e6f5f3;">
+<!-- Tailwind CSS -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- Header -->
+<header class="bg-white shadow-md py-2 px-4 flex items-center justify-between sticky top-0 z-30">
+    <!-- Left Logo -->
+  <div class="flex items-center">
+    <img src="DG-logo.png" alt="DG-logo" class="h-10">
+  </div>
+  <!-- Navigation -->
+  <nav class="flex-1">
+    <ul class="flex gap-4 text-gray-700 font-medium justify-center items-center">
+      <li><a href="index.html" class="hover:text-[#009490] font-semibold">Training Overview</a></li>
+      <li class="relative" id="trainingDeliveryMenu">
+        <button type="button" id="trainingDeliveryBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Training Delivery
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="trainingDeliveryDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="new-hire-training.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">New Hire Training</a></li>
+          <li><a href="continues-education.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Continues Education</a></li>
+          <li><a href="product-knowledge.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">PKT</a></li>
+        </ul>
+      </li>
+      <li><a href="training-initiatives.html" class="hover:text-[#009490] font-bold">Training Initiatives</a></li>
+      <li><a href="training-analysis.html" class="hover:text-[#009490]">TNA</a></li>
+      <li><a href="trainee profile.html" class="hover:text-[#009490]">Trainee Profile</a></li>
+      <li><a href="training forms.html" class="hover:text-[#009490]">Training Forms</a></li>
+      <li class="relative" id="trainingCurriculumsMenu">
+        <button type="button" id="trainingCurriculumsBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Training Curriculums
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="trainingCurriculumsDropdown" class="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="#" class="block px-4 py-2 font-semibold text-gray-700 cursor-default">Soft Skills (GDCCS)</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Product Knowledge</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Operating Systems</a></li>
+        </ul>
+      </li>
+      <li class="relative" id="knowledgeManagementMenu">
+        <button type="button" id="knowledgeManagementBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Knowledge Management
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="knowledgeManagementDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="update-tracker.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Update Tracker</a></li>
+          <li><a href="content-creation.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Content Creation</a></li>
+          <li><a href="knowledge-hub-index.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Knowledge Hub Index</a></li>
+          <li><a href="bo-meeting-tracker.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">BO Meeting Tracker</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+    <!-- Right Logo -->
+  <div class="flex items-center">
+    <img src="DHA-logo.svg" alt="Green Logo" class="h-10">
+  </div>
+</header>
+
+  <!-- Main Section -->
+  <main class="p-6">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Continues Education Details</h2>
+
+    <!-- Stats Section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="bg-white p-4 rounded-xl shadow-md">
+        <p class="text-sm text-gray-500">Total Participants</p>
+        <h3 class="text-xl font-bold text-blue-700" id="totalParticipants">27</h3>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-md">
+        <p class="text-sm text-gray-500">Completed</p>
+        <h3 class="text-xl font-bold text-green-600" id="completedParticipants">22</h3>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-md">
+        <p class="text-sm text-gray-500">Avg. Score</p>
+        <h3 class="text-xl font-bold text-purple-600" id="avgScore">89%</h3>
+      </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="flex items-center gap-4 mb-6">
+      <label for="TrainingTypeFilter" class="font-semibold text-gray-700">Filter by Training type:</label>
+      <select id="TrainingTypeFilter" class="border rounded px-2 py-1">
+        <option value="">All Trainings</option>
+        <option value="CE">CE</option>
+        <option value="Refresher">Refresher</option>
+        <option value="Cross Skilling">Cross Skilling</option>
+        <option value="CAP Session">CAP Session</option>
+      </select>
+    </div>
+
+    <!-- Add Performance Phase (0 to 30 only) widget below the filter and above the table -->
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">0 to 30 Performance</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
+          <p class="text-sm text-gray-500 mb-1">AHT</p>
+          <h3 class="text-xl font-bold text-blue-600" id="perf0to30AHT">--</h3>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
+          <p class="text-sm text-gray-500 mb-1">QA Score %</p>
+          <h3 class="text-xl font-bold text-green-600" id="perf0to30QA">--</h3>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
+          <p class="text-sm text-gray-500 mb-1">CSAT</p>
+          <h3 class="text-xl font-bold text-yellow-500" id="perf0to30CSAT">--</h3>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
+          <p class="text-sm text-gray-500 mb-1">ANS</p>
+          <h3 class="text-xl font-bold text-indigo-600" id="perf0to30ANS">--</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="bg-white rounded-xl shadow-md p-4 overflow-x-auto">
+      <table class="min-w-full table-auto text-sm text-left text-gray-600">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Training Type</th>
+            <th class="px-4 py-2">Topics</th>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Time</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Post Quiz Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="px-4 py-2">Rabia Ashraf</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Muna Ismail</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Sadaf Parveen</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Lynette Leslie Coutinho</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Aisha Taranum</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">92%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Detcy Sara John</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohamed Ibrahim</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Musaab Osman</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">96%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Jomy Jose</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Abdalla mohamed Abdalla abdelfadil</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Siddesh Naik</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Leona Joy Esmade Embradora</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">92%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Muhammed Zahed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">80%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Esraa Gamal Yousif</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohammed Shahed Md. Jafar Ahmed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Gehad Mohamed Abdelazim Abdelazim Salman</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">JAMAL SHAMSULALAM</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ibrahim  Mohamed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hind  El Shikh</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-14</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Shereen  Fatima</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">92%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Sherin  Chandana Chekkuttikkanakam Moosa</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">80%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Asmaa EL Hamioui</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Heba Maged Mohammed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Zohour Mohammed Saeed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">SEED AHMED MOHAMED BASHERY</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Omneia El Sheikh Babikir Mohamed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">85%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Afaf Atef Kmael Mohamed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Bushra Munassar Abdulrab Mohammed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mahmoud Atef Elsayed Yosef</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">92%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Aya Moustafa Mohamed Abdou Mansour</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">80%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohamed Bakheit Edriss Sharif</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Gosay Abdalhapheez Mohamed Taha</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">96%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mandy Mustafa Suliman Mohammed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Eslam Mahmoud Khalil Mohamed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hamda Hassan Abdallah AlHamadi</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Abdelrahman Hanii Alkaabi</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-15</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ahmed Abdullah Alhmmadi</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-16</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohamad Hassan Abdallah Albloushi</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">92%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Qabous Anwar Mohamad Ali</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">80%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Fauzia Fatma</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">RUFUS MARK GONSALVES</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">96%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Sakeena Awad Musa Hamed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ryan Aramil Pakinggan</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ashraf Gasim Alajaba Mohamed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">ARWA AHMED MOHAMMED MANEA</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">MOHAMED MULLA OMER ABDALGADER</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">92%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Wisal Mohamed Ismail Mohamed</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Fatima Gholam Hussein Hassan</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-17</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Nada Tagelsir Eisa Ali</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">96%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Gamar Mohamed Suliman Gamar</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hamad Ali Mohamad Al Jasmi</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Baher Habib Boshra</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Reem Mahboub Yassin Ali</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">95%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hameeda Ismail Hassan</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">92%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Aya Soliman</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Fares Safar Doshanbeh Khawri</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Reem Khalil Ali Al Qassab</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-18</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">96%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Youssef Saeed Ahmad Al Jasmi</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Eiman Hassan Ali Abdalrazig</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Faten Hesham Mohamed Mamdouh Abdoelnaga Elwakeel</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hend Elsayed Saber Shehata</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hesham Hassan Abdelrahman Awad Abdelaziz</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Leen Ayman Abdel Razzaq Al Teany</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Safaa Ali Ahmed Hamid</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Sarra Elamin Elhaj ElKhider</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Assel Ayman Abdel Razzaq Al Teany</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">CRM Training</td>
+            <td class="px-4 py-2">2025-01-19</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Esraa Gamal Yousif</td>
+            <td class="px-4 py-2">Cross Skilling</td>
+            <td class="px-4 py-2">Chat training</td>
+            <td class="px-4 py-2">2025-01-23</td>
+            <td class="px-4 py-2">10:00AM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Asmaa EL Hamioui</td>
+            <td class="px-4 py-2">Cross Skilling</td>
+            <td class="px-4 py-2">Chat training</td>
+            <td class="px-4 py-2">2025-01-23</td>
+            <td class="px-4 py-2">10:00AM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Heba Maged Mohammed</td>
+            <td class="px-4 py-2">Cross Skilling</td>
+            <td class="px-4 py-2">Chat training</td>
+            <td class="px-4 py-2">2025-01-22</td>
+            <td class="px-4 py-2">10:00AM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Aya Moustafa Mohamed Abdou Mansour</td>
+            <td class="px-4 py-2">Cross Skilling</td>
+            <td class="px-4 py-2">Chat training</td>
+            <td class="px-4 py-2">2025-01-22</td>
+            <td class="px-4 py-2">10:00AM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mandy Mustafa Suliman Mohammed</td>
+            <td class="px-4 py-2">Cross Skilling</td>
+            <td class="px-4 py-2">Chat training</td>
+            <td class="px-4 py-2">2025-01-21</td>
+            <td class="px-4 py-2">10:00AM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ahmed Abdullah Alhmmadi</td>
+            <td class="px-4 py-2">Cross Skilling</td>
+            <td class="px-4 py-2">Chat training</td>
+            <td class="px-4 py-2">2025-01-21</td>
+            <td class="px-4 py-2">10:00AM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Wisal Mohamed Ismail Mohamed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-30</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Fatima Gholam Hussein Hassan</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-30</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hameeda Ismail Hassan</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-29</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Aya Soliman</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-30</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Reem Khalil Ali Al Qassab</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-30</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Youssef Saeed Ahmad Al Jasmi</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-30</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Faten Hesham Mohamed Mamdouh Abdoelnaga Elwakeel</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-30</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hend Elsayed Saber Shehata</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-29</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hesham Hassan Abdelrahman Awad Abdelaziz</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-29</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Leen Ayman Abdel Razzaq Al Teany</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-29</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Safaa Ali Ahmed Hamid</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-30</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Sarra Elamin Elhaj ElKhider</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">New Queue - PH</td>
+            <td class="px-4 py-2">2025-01-30</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Fatima Gholam Hussein Hassan</td>
+            <td class="px-4 py-2">Cross Skilling</td>
+            <td class="px-4 py-2">Social media Training</td>
+            <td class="px-4 py-2">2025-03-02</td>
+            <td class="px-4 py-2">10:00AM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Sarra Elamin Elhaj ElKhider</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-20</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Faten Hesham Mohamed Mamdouh Abdoelnaga Elwakeel</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-20</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Wisal Mohamed Ismail Mohamed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-20</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">MOHAMED MULLA OMER ABDALGADER</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-20</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hesham Hassan Abdelrahman Awad Abdelaziz</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-20</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Youssef Saeed Ahmad Al Jasmi</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-20</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ashraf Gasim Alajaba Mohamed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-20</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Leen Ayman Abdel Razzaq Al Teany</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-21</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Abdelrahman Hanii Alkaabi</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-21</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Esraa Gamal Yousif</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-21</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">ARWA AHMED MOHAMMED MANEA</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-21</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Heba Maged Mohammed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-21</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hamda Hassan Abdallah AlHamadi</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-21</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Aya Soliman</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-21</td>
+            <td class="px-4 py-2">12:00PM to 01:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Faten Hesham Mohamed Mamdouh Abdoelnaga Elwakeel</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-27</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hesham Hassan Abdelrahman Awad Abdelaziz</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-27</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">SEED AHMED MOHAMED BASHERY</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-28</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Aya Moustafa Mohamed Abdou Mansour</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-28</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">MOHAMED MULLA OMER ABDALGADER</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-28</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Heba Maged Mohammed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mandy Mustafa Suliman Mohammed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Abdelrahman Hanii Alkaabi</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ashraf Gasim Alajaba Mohamed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Baher Habib Boshra</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Asmaa EL Hamioui</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Afaf Atef Kmael Mohamed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Hamda Hassan Abdallah AlHamadi</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ryan Aramil Pakinggan</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Sarra Elamin Elhaj ElKhider</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohamed Usama Ahmed Mohamed Hassan Haggy</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Rawya Abdulwahab Abdulaal Basheir</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Ahmed Iqbal Hussain</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">93%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mariam Khamis</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Marwan Ahmed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Abdalla mohamed Abdalla abdelfadil</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-04-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">ARWA AHMED MOHAMMED MANEA</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-04-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Youssef Saeed Ahmad Al Jasmi</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-04-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Fatima Gholam Hussein Hassan</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-08-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Rabia Ashraf</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-08-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mahmoud Atef Elsayed Yosef</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-08-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Precilla Crasto</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-08-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Baher Habib Boshra</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-02-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohamed Bakheit Edriss Sharif</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Training on new service</td>
+            <td class="px-4 py-2">2025-03-04</td>
+            <td class="px-4 py-2">12:00PM to 02:00PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohamed Nagy Abdellatif Hussain</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Birth certificates review</td>
+            <td class="px-4 py-2">2025-04-21</td>
+            <td class="px-4 py-2">11:00AM to 03:PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohamed Nagy Abdellatif Hussain</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Birth certificates review</td>
+            <td class="px-4 py-2">2025-04-22</td>
+            <td class="px-4 py-2">11:00AM to 03:PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohammed Shahed Md. Jafar Ahmed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Birth certificates review</td>
+            <td class="px-4 py-2">2025-07-05</td>
+            <td class="px-4 py-2">11:00AM to 03:PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Mohammed Shahed Md. Jafar Ahmed</td>
+            <td class="px-4 py-2">CE</td>
+            <td class="px-4 py-2">Birth certificates review</td>
+            <td class="px-4 py-2">2025-08-05</td>
+            <td class="px-4 py-2">11:00AM to 03:PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">Completed</td>
+            <td class="px-4 py-2">100%</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="px-4 py-2">Reem Khalil Ali Al Qassab</td>
+            <td class="px-4 py-2">Refresher</td>
+            <td class="px-4 py-2">General Refresher</td>
+            <td class="px-4 py-2">2025-05-21</td>
+            <td class="px-4 py-2">11:00AM to 03:PM</td>
+            <td class="px-4 py-2 text-yellow-600 font-semibold">In Progress</td>
+            <td class="px-4 py-2">--</td>
+          </tr>
+          <!-- More rows to be dynamically loaded -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Script Section -->
+  <script>
+  // Utility to normalize status text
+  function isCompleted(status) {
+    return status && status.trim().toLowerCase() === "completed";
+  }
+  document.addEventListener('click', function (e) {
+    const menuButtons = [
+      { btn: 'trainingDeliveryBtn', dropdown: 'trainingDeliveryDropdown' },
+      { btn: 'trainingCurriculumsBtn', dropdown: 'trainingCurriculumsDropdown' },
+      { btn: 'knowledgeManagementBtn', dropdown: 'knowledgeManagementDropdown' }
+    ];
+
+    menuButtons.forEach(({ btn, dropdown }) => {
+      const button = document.getElementById(btn);
+      const menu = document.getElementById(dropdown);
+      if (button && menu && button.contains(e.target)) {
+        menu.classList.toggle('hidden');
+        e.stopPropagation();
+      } else if (menu && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  });
+  function updateStatsSectionByTrainingType() {
+    const type = document.getElementById('TrainingTypeFilter').value;
+    const tbody = document.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+
+    let totalParticipants = 0;
+    let completedCount = 0;
+    let scoreSum = 0;
+    let scoreCount = 0;
+
+    rows.forEach(row => {
+      const typeCell = row.children[1];
+      const statusCell = row.children[5];
+      const scoreCell = row.children[6];
+      const matchesType = !type || (typeCell && typeCell.textContent.trim() === type);
+
+      row.style.display = matchesType ? "" : "none";
+      if (matchesType) {
+        totalParticipants++;
+        if (isCompleted(statusCell?.textContent)) completedCount++;
+        if (scoreCell) {
+          const scoreText = scoreCell.textContent.trim().replace('%', '');
+          const score = parseFloat(scoreText);
+          if (!isNaN(score)) {
+            scoreSum += score;
+            scoreCount++;
+          }
+        }
+      }
+    });
+
+    const completedPercent = totalParticipants > 0 ? Math.round((completedCount / totalParticipants) * 100) + "%" : "--";
+    const avgScore = scoreCount > 0 ? (scoreSum / scoreCount).toFixed(0) + "%" : "--";
+
+    document.getElementById('totalParticipants').textContent = totalParticipants;
+    document.getElementById('completedParticipants').textContent = completedPercent;
+    document.getElementById('avgScore').textContent = avgScore;
+  }
+
+  // Change the color of "Completed" status to green in the table
+  function colorCompletedGreen() {
+    const tbody = document.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    rows.forEach(row => {
+      const statusCell = row.children[5];
+      if (statusCell) {
+        if (statusCell.textContent.trim().toLowerCase() === "completed") {
+          statusCell.classList.remove('text-yellow-600');
+          statusCell.classList.add('text-green-600');
+        } else {
+          statusCell.classList.remove('text-green-600');
+          statusCell.classList.add('text-yellow-600');
+        }
+      }
+    });
+  }
+
+  // Fill 0 to 30 Performance section with static values
+  document.getElementById('perf0to30AHT').textContent = "7:10";
+  document.getElementById('perf0to30QA').textContent = "92%";
+  document.getElementById('perf0to30CSAT').textContent = "85%";
+  document.getElementById('perf0to30ANS').textContent = "1200";
+
+  // Single event listener for filter
+  document.getElementById('TrainingTypeFilter').addEventListener('change', () => {
+    updateStatsSectionByTrainingType();
+    colorCompletedGreen();
+  });
+
+  // Initial call on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    updateStatsSectionByTrainingType();
+    colorCompletedGreen();
+  });
+  </script>
+</body>
+</html>

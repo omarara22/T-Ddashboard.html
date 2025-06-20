@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Hire Training | DHA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-sans" style="background-color: #e6f5f3;">
+  <!-- Header -->
+  <header class="bg-white shadow-md py-2 px-4 flex items-center justify-between sticky top-0 z-30">
+    <!-- Left side: TPnexus logo (smaller and moved up) -->
+    <div class="flex items-start" style="margin-top: -1cm;">
+      <img src="tpnexus-logo.png" alt="TPnexus Logo" class="h-7">
+    </div>
+    <!-- Center: Navigation (Back to Dashboard, TSO, Training Agenda, Trainees List) -->
+    <nav class="flex-1">
+      <ul class="flex gap-4 text-gray-700 font-medium justify-center items-center">
+        <li><a href="index.html" class="hover:underline font-bold">← Back to Dashboard</a></li>
+        <li><a href="#" id="tsoOption" class="hover:underline font-bold">TSO</a></li>
+        <li>
+          <a href="#" id="trainingAgendaOption" class="hover:underline font-bold hidden">Training Agenda</a>
+        </li>
+        <li>
+          <a href="#" id="traineesListOption" class="hover:underline font-bold hidden">Trainees List</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Right side: DHA logo and page title -->
+    <div class="flex flex-col items-end ml-2">
+      <img src="green-logo.png" alt="Green Logo" class="h-12 mb-1">
+      <h1 class="text-lg font-semibold text-gray-800">New Hire Training</h1>
+    </div>
+  </header>
+
+  <!-- Filter Section -->
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2 gap-4 mt-4">
+    <!-- Filter Section (left, vertically centered, shifted more to right) -->
+    <div class="flex items-center gap-2 md:mb-0 mb-2 pl-8">
+      <label for="batchNumber" class="font-semibold text-gray-700 mr-2">Filter by Batch:</label>
+      <select id="batchNumber" class="border rounded px-2 py-1">
+        <option value="">All Batches</option>
+        <option value="80">Batch 80</option>
+        <option value="81">Batch 81</option>
+        <option value="82">Batch 82</option>
+        <option value="83">Batch 83</option>
+        <option value="84">Batch 84</option>
+        <option value="85">Batch 85</option>
+        <option value="86">Batch 86</option>
+      </select>
+    </div>
+    <!-- Download Buttons Row (right, with new names and extra button) -->
+    <div class="flex flex-col items-end pr-4">
+      <button id="downloadReportBtn" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm shadow">
+        Download Report
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Section -->
+  <main class="p-6">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4" id="mainTitle">New Hire Training Details</h2>
+
+    <!-- Stats Section -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6" id="statsSection">
+      <div class="bg-white p-4 rounded-xl shadow-md">
+        <p class="text-sm text-gray-500">Total Trainees</p>
+        <h3 class="text-xl font-bold text-blue-700">34</h3>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-md">
+        <p class="text-sm text-gray-500">Completed</p>
+        <h3 class="text-xl font-bold text-green-600">28</h3>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-md">
+        <p class="text-sm text-gray-500">Avg. Score</p>
+        <h3 class="text-xl font-bold text-purple-600">87%</h3>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-md">
+        <p class="text-sm text-gray-500">Attrition %</p>
+        <h3 class="text-xl font-bold text-red-500">5%</h3>
+      </div>
+    </div>
+
+    <!-- Add a dropdown to select the performance phase above the performance section -->
+    <!-- filepath: d:\training dashboard site\new-hire-training.html -->
+    <div class="flex items-center gap-2 mb-2 mt-8">
+      <label for="performancePhase" class="text-lg font-semibold text-gray-800">Performance Phase:</label>
+      <select id="performancePhase" class="border rounded px-2 py-1 text-base">
+        <option value="60to90">Nesting Performance</option>
+        <option value="0to30">0 to 30 Performance</option>
+        <option value="30to60">30 to 60 Performance</option>
+        <option value="60to90">60 to 90 Performance</option>
+      </select>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4" id="performance0to30Section">
+      <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
+        <p class="text-sm text-gray-500 mb-1">AHT</300>
+        <h3 class="text-xl font-bold text-blue-600" id="perf0to30AHT">--</h3>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
+        <p class="text-sm text-gray-500 mb-1">QA Score %</p>
+        <h3 class="text-xl font-bold text-green-600" id="perf0to30QA">--</h3>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
+        <p class="text-sm text-gray-500 mb-1">CSAT</p>
+        <h3 class="text-xl font-bold text-yellow-500" id="perf0to30CSAT">--</h3>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
+        <p class="text-sm text-gray-500 mb-1">ANS</p>
+        <h3 class="text-xl font-bold text-indigo-600" id="perf0to30ANS">--</h3>
+      </div>
+    </div>
+
+    <!-- Trainees Table Section -->
+    <div class="bg-white rounded-xl shadow-md p-4 overflow-x-auto" id="traineesTableSection">
+      <table class="min-w-full table-auto text-sm text-left text-gray-600">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Batch</th>
+            <th class="px-4 py-2">Join Date</th>
+            <th class="px-4 py-2">Channel</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Certifications</th>
+            <th class="px-4 py-2">Score</th>
+          </tr>
+        </thead>
+        <tbody id="traineesTableBody">
+      <tr class="border-b">
+        <td class="px-4 py-2">Mohamed Adil Dirar Ali </td>
+        <td class="px-4 py-2">80</td>
+        <td class="px-4 py-2">20-06-2023</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">95.05%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Abdulhamed Yasir Abdulhamed Khalid</td>
+        <td class="px-4 py-2">80</td>
+        <td class="px-4 py-2">20-06-2023</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">95.41%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Gamar Mohamed Suliman Gamar</td>
+        <td class="px-4 py-2">80</td>
+        <td class="px-4 py-2">20-06-2023</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">95.34%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Ahmed Mustafa Mohamed Suleiman </td>
+        <td class="px-4 py-2">80</td>
+        <td class="px-4 py-2">20-06-2023</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">95.36%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Nada Tagelsir Eisa Ali</td>
+        <td class="px-4 py-2">80</td>
+        <td class="px-4 py-2">20-06-2023</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">94.47%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Amira Nasreldin Shehata Mohamed </td>
+        <td class="px-4 py-2">80</td>
+        <td class="px-4 py-2">20-06-2023</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">94.9%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Mazen Mohammed Qundos</td>
+        <td class="px-4 py-2">81</td>
+        <td class="px-4 py-2">20-12-2023</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">100.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Hamad Ali Mohamad Al Jasmi</td>
+        <td class="px-4 py-2">82</td>
+        <td class="px-4 py-2">04-01-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">97.64%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Ammar Ahmed Ali Abdelgadir</td>
+        <td class="px-4 py-2">83</td>
+        <td class="px-4 py-2">30-01-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">94.59%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Aya Soliman</td>
+        <td class="px-4 py-2">83</td>
+        <td class="px-4 py-2">30-01-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">100.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Baher Habib Boshra</td>
+        <td class="px-4 py-2">83</td>
+        <td class="px-4 py-2">30-01-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">94.35%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Hameeda Ismail Hassan</td>
+        <td class="px-4 py-2">83</td>
+        <td class="px-4 py-2">30-01-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">100.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Reem Mahboub Yassin Ali</td>
+        <td class="px-4 py-2">83</td>
+        <td class="px-4 py-2">30-01-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">95.49%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Assel Ayman Abdel Razzaq Al Teany</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">98.03%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Eiman Hassan Ali Abdalrazig</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">100.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Fares Safar Doshanbeh Khawri</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">100.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Faten Hesham Mohamed Mamdouh Abdoelnaga Elwakeel</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">97.03%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Hend Elsayed Saber Shehata</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">94.6%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Hesham Hassan Abdelrahman Awad Abdelaziz</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">91.02%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Leen Ayman Abdel Razzaq Al Teany</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">94.2%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Nouran Mohamed Abdelwahab Emam Shady</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">91.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Reem Khalil Ali Al Qassab</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">94.77%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Safaa Ali Ahmed Hamid</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">96.59%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Sarra Elamin Elhaj ElKhider</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">100.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Youssef Saeed Ahmad Al Jasmi</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">100.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Youssif Sherif Hassan Abdelmoula</td>
+        <td class="px-4 py-2">84</td>
+        <td class="px-4 py-2">02-10-2024</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Completed</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">97.69%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Ahmed Iqbal Hussain </td>
+        <td class="px-4 py-2">85</td>
+        <td class="px-4 py-2">17-02-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Nesting In Progress</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">91.89%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Huda Ibrahim Nasser Hussein</td>
+        <td class="px-4 py-2">85</td>
+        <td class="px-4 py-2">17-02-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Nesting In Progress</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">100.0%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Mariam Ibrahim Ahmed Ahmed Khamis</td>
+        <td class="px-4 py-2">85</td>
+        <td class="px-4 py-2">17-02-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Resigned</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Marwan Mustafa Muhamed Elnoby Ahmed</td>
+        <td class="px-4 py-2">85</td>
+        <td class="px-4 py-2">17-02-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">terminated</td>
+        <td class="px-4 py-2 text-red-600 font-semibold">Failed</td>
+        <td class="px-4 py-2">85.98%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Mohamed Usama Ahmed Mohamed Hassan Haggy</td>
+        <td class="px-4 py-2">85</td>
+        <td class="px-4 py-2">17-02-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">terminated</td>
+        <td class="px-4 py-2 text-red-600 font-semibold">Failed</td>
+        <td class="px-4 py-2">73.37%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Muhammad Saad</td>
+        <td class="px-4 py-2">85</td>
+        <td class="px-4 py-2">17-02-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Resigned</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Rawya Abdulwahab Abdulaal Basheir</td>
+        <td class="px-4 py-2">85</td>
+        <td class="px-4 py-2">17-02-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Training In Progress</td>
+        <td class="px-4 py-2 text-green-600 font-semibold">Passed</td>
+        <td class="px-4 py-2">90.36%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Chaima Tka</td>
+        <td class="px-4 py-2">86</td>
+        <td class="px-4 py-2">19-05-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Training In Progress</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Ebithal Nasraldeen Ahmed Mohamed</td>
+        <td class="px-4 py-2">86</td>
+        <td class="px-4 py-2">19-05-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Training In Progress</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Esraa Hamza </td>
+        <td class="px-4 py-2">86</td>
+        <td class="px-4 py-2">19-05-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Training In Progress</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Hawra Ibrahim Nasser Hussein</td>
+        <td class="px-4 py-2">86</td>
+        <td class="px-4 py-2">19-05-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Training In Progress</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Mohamed Habib Barakat Mohamed</td>
+        <td class="px-4 py-2">86</td>
+        <td class="px-4 py-2">19-05-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Training In Progress</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Mohamed Raafat Amen Elbamby</td>
+        <td class="px-4 py-2">86</td>
+        <td class="px-4 py-2">19-05-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Training In Progress</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+
+      <tr class="border-b">
+        <td class="px-4 py-2">Mostafa Abdelrahman Saad Mohamed Shaaban </td>
+        <td class="px-4 py-2">86</td>
+        <td class="px-4 py-2">19-05-2025</td>
+        <td class="px-4 py-2">Voice</td>
+        <td class="px-4 py-2">Training In Progress</td>
+        <td class="px-4 py-2 text-Gray-600 font-semibold">Not attempted</td>
+        <td class="px-4 py-2">nan%</td>
+      </tr>
+          <!-- More rows to be dynamically loaded -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Training Agenda Table Section (hidden by default) -->
+    <div class="bg-white rounded-xl shadow-md p-4 overflow-x-auto hidden" id="agendaTableSection">
+      <table class="min-w-full table-auto text-sm text-left text-gray-600">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2">Session</th>
+            <th class="px-4 py-2">Trainer</th>
+            <th class="px-4 py-2">SME</th>
+            <th class="px-4 py-2">Day</th>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Time</th>
+            <th class="px-4 py-2">Training method</th>
+            <th class="px-4 py-2">Duration "Hours"</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="px-4 py-2">Induction</td>
+            <td class="px-4 py-2">HR Orientation</td>
+            <td class="px-4 py-2">Mostafa Al Azab</td>
+            <td class="px-4 py-2">HR</td>
+            <td class="px-4 py-2">Monday</td>
+            <td class="px-4 py-2">19/05/2025</td>
+            <td class="px-4 py-2">9:00 AM - 6:00PM</td>
+            <td class="px-4 py-2">MS Teams</td>
+            <td class="px-4 py-2">8</td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-4 py-2">HRS-HP</td>
+            <td class="px-4 py-2">Intro to HRS</td>
+            <td class="px-4 py-2">Mostafa Al Azab</td>
+            <td class="px-4 py-2">IT</td>
+            <td class="px-4 py-2">Monday</td>
+            <td class="px-4 py-2">19/05/2025</td>
+            <td class="px-4 py-2">9:00 AM - 6:00PM</td>
+            <td class="px-4 py-2">MS Teams</td>
+            <td class="px-4 py-2">8</td>
+          </tr>
+          <tr class=""border-b">
+            </td class="px-4 py-2">>
+          <!-- More agenda rows as needed -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Add this widget above Completed and Avg. Score in the stats section, but only show it when agenda is open -->
+    <!-- filepath: d:\training dashboard site\new-hire-training.html -->
+    <div id="totalTrainingHoursWidget" class="bg-yellow-100 border-l-4 border-yellow-500 p-4 mb-4 rounded-xl flex items-center shadow-md hidden">
+      <span class="text-2xl font-bold text-yellow-700 mr-4" id="totalTrainingHoursValue">--</span>
+      <span class="text-gray-700 font-semibold">Total Training Hours for this Batch</span>
+    </div>
+  </main>
+
+  <script>
+    // Remove all date filter logic and keep only batch filter
+// filepath: d:\training dashboard site\new-hire-training.html
+document.getElementById('batchNumber').addEventListener('change', filterTraineesTable);
+
+function filterTraineesTable() {
+  const batch = document.getElementById('batchNumber').value;
+  const tbody = document.getElementById('traineesTableBody');
+  const rows = tbody.querySelectorAll('tr');
+  rows.forEach(row => {
+    const batchCell = row.children[1]; // Batch is the 2nd <td>
+    if (!batch || batchCell.textContent.trim() === batch) {
+      row.style.display = "";
+    } else {
+      row.style.display = "none";
+    }
+  });
+}
+
+// Update stats (Total Trainees, Completed, Avg. Score, Attrition %) according to the batch filter selection
+// filepath: d:\training dashboard site\new-hire-training.html
+
+function updateStatsSection() {
+  const batch = document.getElementById('batchNumber').value;
+  const tbody = document.getElementById('traineesTableBody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+
+  // Filter rows according to batch
+  const filteredRows = rows.filter(row => {
+    const batchCell = row.children[1];
+    return !batch || (batchCell && batchCell.textContent.trim() === batch);
+  });
+
+  // Total trainees (filtered)
+  const total = filteredRows.length;
+
+  // Completed trainees
+  const completed = filteredRows.filter(row => {
+    const statusCell = row.children[4];
+    return statusCell && statusCell.textContent.trim().toLowerCase() === "completed";
+  }).length;
+
+  // Attrition (Resigned or terminated)
+  const attrition = filteredRows.filter(row => {
+    const statusCell = row.children[4];
+    if (!statusCell) return false;
+    const status = statusCell.textContent.trim().toLowerCase();
+    return status === "resigned" || status === "terminated";
+  }).length;
+
+  // Average Score (ignore nan% and attrition)
+  let scoreSum = 0;
+  let scoreCount = 0;
+  filteredRows.forEach(row => {
+    const statusCell = row.children[4];
+    const scoreCell = row.children[6];
+    if (
+      statusCell &&
+      scoreCell &&
+      statusCell.textContent.trim().toLowerCase() !== "resigned" &&
+      statusCell.textContent.trim().toLowerCase() !== "terminated"
+    ) {
+      const scoreText = scoreCell.textContent.trim().replace('%', '');
+      const score = parseFloat(scoreText);
+      if (!isNaN(score)) {
+        scoreSum += score;
+        scoreCount++;
+      }
+    }
+  });
+  const avgScore = scoreCount > 0 ? (scoreSum / scoreCount).toFixed(2) : "0";
+
+  // Attrition %
+  const attritionPercent = total > 0 ? ((attrition / total) * 100).toFixed(1) : "0";
+
+  // Update DOM
+  const stats = document.querySelectorAll('#statsSection h3');
+  if (stats.length >= 4) {
+    stats[0].textContent = total;                // Total Trainees
+    stats[1].textContent = completed;            // Completed
+    stats[2].textContent = avgScore + "%";       // Avg. Score
+    stats[3].textContent = attritionPercent + "%"; // Attrition %
+  }
+}
+
+// Call updateStatsSection after filtering
+document.getElementById('batchNumber').addEventListener('change', function() {
+  filterTraineesTable();
+  updateStatsSection();
+});
+
+// Call once on page load
+updateStatsSection();
+
+document.getElementById('downloadReportBtn').addEventListener('click', function() {
+  const batch = document.getElementById('batchNumber').value;
+  if (batch) {
+    // Download report for selected batch
+    downloadBatchReport(batch);
+  } else {
+    // Download overall report for all batches
+    downloadOverallReport();
+  }
+});
+
+// Example implementations (replace with your actual logic)
+function downloadBatchReport(batch) {
+  alert('Downloading report for Batch ' + batch);
+  // ... your batch report download logic here ...
+}
+
+function downloadOverallReport() {
+  alert('Downloading overall report for all batches');
+  // ... your overall report download logic here ...
+}
+
+// Show/Hide Training Agenda section logic
+// filepath: d:\training dashboard site\new-hire-training.html
+
+document.getElementById('trainingAgendaOption').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('agendaTableSection').classList.remove('hidden');
+  document.getElementById('traineesTableSection').classList.add('hidden');
+  document.getElementById('mainTitle').textContent = "Training Agenda";
+});
+
+document.getElementById('traineesListOption').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('agendaTableSection').classList.add('hidden');
+  document.getElementById('traineesTableSection').classList.remove('hidden');
+  document.getElementById('mainTitle').textContent = "New Hire Training Details";
+});
+
+// Show the "Training Agenda" option only when a batch is selected, and show agenda for that batch
+// filepath: d:\training dashboard site\new-hire-training.html
+
+// 1. Show/hide the agenda option based on batch selection
+document.getElementById('batchNumber').addEventListener('change', function() {
+  filterTraineesTable();
+  updateStatsSection();
+  const batch = this.value;
+  const agendaOption = document.getElementById('trainingAgendaOption');
+  const traineesListOption = document.getElementById('traineesListOption');
+  if (batch) {
+    agendaOption.classList.remove('hidden');
+    traineesListOption.classList.remove('hidden');
+  } else {
+    agendaOption.classList.add('hidden');
+    traineesListOption.classList.add('hidden');
+    // Always show trainees table if no batch selected
+    document.getElementById('agendaTableSection').classList.add('hidden');
+    document.getElementById('traineesTableSection').classList.remove('hidden');
+    document.getElementById('mainTitle').textContent = "New Hire Training Details";
+  }
+});
+
+// 2. When clicking agenda, show agenda section for the selected batch
+document.getElementById('trainingAgendaOption').addEventListener('click', function(e) {
+  e.preventDefault();
+  const batch = document.getElementById('batchNumber').value;
+  document.getElementById('agendaTableSection').classList.remove('hidden');
+  document.getElementById('traineesTableSection').classList.add('hidden');
+  document.getElementById('mainTitle').textContent = "Training Agenda - Batch " + batch;
+  // Optionally, filter agenda rows here if you have per-batch agenda data
+});
+
+// 3. When clicking trainees list, go back to trainees table
+document.getElementById('traineesListOption').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('agendaTableSection').classList.add('hidden');
+  document.getElementById('traineesTableSection').classList.remove('hidden');
+  document.getElementById('mainTitle').textContent = "New Hire Training Details";
+});
+
+// Add this script after your other scripts
+// filepath: d:\training dashboard site\new-hire-training.html
+
+// 1. Define agendas for each batch (example: 80, 81, ..., 86)
+const agendasByBatch = {
+  "80": [
+    { session: "Induction", trainer: "Mostafa Al Azab", sme: "Ahmed Ali", day: "Monday", date: "20/06/2023", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Product", trainer: "Sara Ahmed", sme: "Mohamed Hassan", day: "Tuesday", date: "21/06/2023", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    // ... add 5 more rows for batch 80
+  ],
+  "81": [
+    { session: "Induction", trainer: "Mostafa Al Azab", sme: "Ahmed Ali", day: "Monday", date: "20/12/2023", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    // ... add 6 more rows for batch 81
+  ],
+  "83": [
+    { session: "Soft Skills", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "30/01/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Soft Skills", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "31/01/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Soft Skills", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "01/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Security session", trainer: "Osama", sme: "Hamid", day: "Friday", date: "02/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Idea about Dubai Health (DH-DAHC)", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "04/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Monday", date: "05/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "06/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "07/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "08/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Friday", date: "09/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "11/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Monday", date: "12/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "13/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Professional", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "14/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "15/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Friday", date: "16/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "18/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Monday", date: "19/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "20/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "21/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "22/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Friday", date: "23/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "25/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "HRS Facility", trainer: "Osama", sme: "Hamid", day: "Monday", date: "26/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "System Practice", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "27/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "System Practice", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "28/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "System Practice", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "29/02/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "System Practice", trainer: "Osama", sme: "Hamid", day: "Friday", date: "01/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "complain session", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "03/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Mock calls", trainer: "Osama", sme: "Hamid", day: "Monday", date: "04/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "QA & OP  Session", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "05/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Final Assessment", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "06/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "07/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Friday", date: "08/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "10/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Monday", date: "11/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "12/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "13/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "14/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Friday", date: "15/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "17/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Monday", date: "18/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "19/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "20/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "21/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Friday", date: "22/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "24/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Monday", date: "25/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "26/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "27/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "28/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Friday", date: "29/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "31/03/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "certification", trainer: "Osama", sme: "Hamid", day: "Monday", date: "01/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "0" },
+    { session: "Nesting - Recap", trainer: "Osama", sme: "Hamid", day: "Tuesday", date: "02/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting - Recap", trainer: "Osama", sme: "Hamid", day: "Wednesday", date: "03/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting - Recap", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "04/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "certification round 2 only reem. Rest floor", trainer: "Osama", sme: "Hamid", day: "Friday", date: "05/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Hamid", day: "Sunday", date: "07/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "4" },
+    { session: "Nesting - Recap", trainer: "Osama", sme: "Hamid", day: "Thursday", date: "11/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Nesting - Recap", trainer: "Osama", sme: "Hamid", day: "Friday", date: "12/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" },
+    { session: "Nesting - Recap", trainer: "Osama", sme: "Hamid", day: "Saturday", date: "13/04/2024", time: "9:00AM - 6:00PM", method: "Face to Face", duration: "8" }
+  ],
+  "84": [
+    { session: "Soft Skills", trainer: "Osama", sme: "NA", day: "Thursday", date: "03/10/2024", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "Soft Skills", trainer: "Osama", sme: "NA", day: "Friday", date: "04/10/2024", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "Soft Skills", trainer: "Osama", sme: "NA", day: "Saturday", date: "05/10/2024", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "Idea about Dubai Health", trainer: "Osama", sme: "NA", day: "Monday", date: "07/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Professional - Policies", trainer: "Osama", sme: "NA", day: "Tuesday", date: "08/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Professional - Regulations", trainer: "Osama", sme: "NA", day: "Wednesday", date: "09/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Professional - Services", trainer: "Osama", sme: "NA", day: "Thursday", date: "10/10/2024", time: "10:00AM - 7:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "HRS Professional - Services", trainer: "Osama", sme: "NA", day: "Friday", date: "11/10/2024", time: "10:00AM - 7:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "DHA ISR & Recap", trainer: "Osama", sme: "NA", day: "Monday", date: "14/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Professional - Services", trainer: "Osama", sme: "NA", day: "Tuesday", date: "15/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Professional - Services", trainer: "Osama", sme: "NA", day: "Wednesday", date: "16/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Scenarios, PSV, CBT & Oral", trainer: "Osama", sme: "NA", day: "Thursday", date: "17/10/2024", time: "10:00AM - 7:00PM", method: "MS Teams", duration: "8" },
+    { session: "Recap & assessment", trainer: "Osama", sme: "NA", day: "Friday", date: "18/10/2024", time: "10:00AM - 7:00PM", method: "MS Teams", duration: "8" },
+    { session: "Assessment for HP licensing Department", trainer: "Osama", sme: "NA", day: "Saturday", date: "19/10/2024", time: "10:00AM - 7:00PM", method: "MS Teams", duration: "8" },
+    { session: "Assessts Collection - Technical follow up", trainer: "Osama", sme: "NA", day: "Monday", date: "21/10/2024", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "Tichnical issues, technical tracker", trainer: "Osama", sme: "NA", day: "Tuesday", date: "22/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "MyTp NH Security Training", trainer: "Osama", sme: "NA", day: "Wednesday", date: "23/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Professional - Technical issues &", trainer: "Osama", sme: "NA", day: "Thursday", date: "24/10/2024", time: "10:00AM - 7:00PM", method: "MS Teams", duration: "8" },
+    { session: "System Practice IBM - Professional", trainer: "Osama", sme: "NA", day: "Friday", date: "25/10/2024", time: "10:00AM - 7:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Facility - Policies", trainer: "Osama", sme: "NA", day: "Monday", date: "28/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Facility - Regulations", trainer: "Osama", sme: "NA", day: "Tuesday", date: "29/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Facility - Services", trainer: "Osama", sme: "NA", day: "Wednesday", date: "30/10/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Facility - Services", trainer: "Osama", sme: "NA", day: "Thursday", date: "31/10/2024", time: "10:00AM - 7:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "Facility Technical issues & Scenarios", trainer: "Osama", sme: "NA", day: "Friday", date: "01/11/2024", time: "10:00AM - 7:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "System Practice IBM Facility", trainer: "Osama", sme: "NA", day: "Saturday", date: "02/11/2024", time: "10:00AM - 7:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "Health Facility Guide lines", trainer: "Osama", sme: "NA", day: "Sunday", date: "03/11/2024", time: "10:00AM - 7:00PM", method: "MS Teams", duration: "8" },
+    { session: "VOC", trainer: "Osama", sme: "NA", day: "Monday", date: "04/11/2024", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "System Practice CRM & Escalation Process", trainer: "Osama", sme: "NA", day: "Tuesday", date: "05/11/2024", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "System Practice Genesys & SMS portal", trainer: "Osama", sme: "NA", day: "Wednesday", date: "06/11/2024", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "QA & OP  Session", trainer: "Osama", sme: "NA", day: "Thursday", date: "07/11/2024", time: "10:00AM - 7:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "Mock Calls", trainer: "Osama", sme: "NA", day: "Saturday", date: "09/11/2024", time: "10:00AM - 7:00PM", method: "MS Teams", duration: "8" },
+    { session: "Final Assessment", trainer: "Osama", sme: "NA", day: "Sunday", date: "10/11/2024", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "8" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Monday", date: "11/11/2024", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Tuesday", date: "12/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Wednesday", date: "13/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Thursday", date: "14/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Friday", date: "15/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - OST - MC", trainer: "Osama", sme: "NA", day: "Sunday", date: "17/11/2024", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Monday", date: "18/11/2024", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Tuesday", date: "19/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Birth & Death Services / MC", trainer: "Osama", sme: "NA", day: "Wednesday", date: "20/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Nesting - Birth Services", trainer: "Osama", sme: "NA", day: "Thursday", date: "21/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Nesting - Death Services", trainer: "Osama", sme: "NA", day: "Friday", date: "22/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Medical Education - PHS Insurance", trainer: "Osama", sme: "NA", day: "Sunday", date: "24/11/2024", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Monday", date: "25/11/2024", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Tuesday", date: "26/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Wednesday", date: "27/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Thursday", date: "28/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Friday", date: "29/11/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Sunday", date: "01/12/2024", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Monday", date: "02/12/2024", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Tuesday", date: "03/12/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Wednesday", date: "04/12/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "NA", day: "Thursday", date: "05/12/2024", time: "10:00AM - 7:00PM", method: "Nesting on site", duration: "0" }
+
+  ],
+  "85": [
+    { session: "Soft Skills", trainer: "Osama", sme: "Na", day: "Monday", date: "17/02/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Soft Skills", trainer: "Osama", sme: "Na", day: "Tuesday", date: "18/02/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Idea about Dubai Health (DH-DAHC)", trainer: "Osama", sme: "Na", day: "Wednesday", date: "19/02/2025", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "HRS Professional - Policies", trainer: "Osama", sme: "Na", day: "Thursday", date: "20/02/2025", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "HRS Professional - Regulations", trainer: "Osama", sme: "Na", day: "Friday", date: "21/02/2025", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "Visa Medical Test - biometric for EID", trainer: "Osama", sme: "Na", day: "Saturday", date: "22/02/2025", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "7" },
+    { session: "Assessts Collection -  DHA ISR & signing NDA", trainer: "Osama", sme: "Na", day: "Monday", date: "24/02/2025", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "HRS Professional - Services - Assessts Confirmation", trainer: "Osama", sme: "Na", day: "Tuesday", date: "25/02/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Professional - PSV, CBT & Oral", trainer: "Osama", sme: "Na", day: "Wednesday", date: "26/02/2025", time: "9:00AM - 6:00PM", method: "Face to Face Training", duration: "8" },
+    { session: "HRS Professional - Services", trainer: "Osama", sme: "Na", day: "Thursday", date: "27/02/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Professional - Services", trainer: "Osama", sme: "Na", day: "Friday", date: "28/02/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Visa Medical Test - biometric for EID", trainer: "Osama", sme: "Na", day: "Saturday", date: "01/03/2025", time: "9:00AM - 4:00PM", method: "Face to Face Training", duration: "5" },
+    { session: "HRS Professional - Services", trainer: "Osama", sme: "Na", day: "Monday", date: "03/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "6" },
+    { session: "Reacp & Assessment", trainer: "Osama", sme: "Na", day: "Tuesday", date: "04/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "6" },
+    { session: "Tichnical issues Follow up, Filling technical tracker", trainer: "Osama", sme: "Na", day: "Wednesday", date: "05/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "6" },
+    { session: "System Practice CRM, Genesys and SMS portal", trainer: "Osama", sme: "Na", day: "Thursday", date: "06/03/2025", time: "9:00AM - 4:00PM", method: "Face to Face Training", duration: "6" },
+    { session: "HRS Facility - Policies & Regulation", trainer: "Osama", sme: "Na", day: "Friday", date: "07/03/2025", time: "9:00AM - 4:00PM", method: "Face to Face Training", duration: "6" },
+    { session: "HRS Facility - Services", trainer: "Osama", sme: "Na", day: "Saturday", date: "08/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "6" },
+    { session: "HRS Facility - Services", trainer: "Osama", sme: "Na", day: "Monday", date: "10/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "6" },
+    { session: "Mock Calls - Final Assessment", trainer: "Osama", sme: "Na", day: "Tuesday", date: "11/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "6" },
+    { session: "Role play, Listining to monitored calls, System Practice CRM, Genesys & IBM/PBM", trainer: "Osama", sme: "Na", day: "Wednesday", date: "12/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "6" },
+    { session: "Role Play, checking system issues", trainer: "Osama", sme: "Na", day: "Thursday", date: "13/03/2025", time: "9:00AM - 4:00PM", method: "Face to Face Training", duration: "6" },
+    { session: "Nesting - Coaching - Professional - Comon scenarios and Technical issues", trainer: "Osama", sme: "Na", day: "Friday", date: "14/03/2025", time: "9:00AM - 4:00PM", method: "Nesting on site", duration: "3" },
+    { session: "Facility issues & Common Scenarios - Medical Education - Medical Training", trainer: "Osama", sme: "Na", day: "Sunday", date: "16/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "8" },
+    { session: "Nesting - Coaching -", trainer: "Osama", sme: "Na", day: "Monday", date: "17/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "3" },
+    { session: "Nesting - Coaching - Facility Technical issues & Common Scenarios", trainer: "Osama", sme: "Na", day: "Tuesday", date: "18/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "3" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Wednesday", date: "19/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Thursday", date: "20/03/2025", time: "9:00AM - 4:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Friday", date: "21/03/2025", time: "9:00AM - 4:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Public health - Nesting - Coaching - Voice of customer ", trainer: "Osama", sme: "Na", day: "Sunday", date: "23/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "8" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Monday", date: "24/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Tuesday", date: "25/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Wednesday", date: "26/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Thursday", date: "27/03/2025", time: "9:00AM - 4:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Friday", date: "28/03/2025", time: "9:00AM - 4:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Monday", date: "31/03/2025", time: "9:00AM - 4:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting - Coaching - Birth & Death Services", trainer: "Osama", sme: "Na", day: "Wednesday", date: "02/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "4" },
+    { session: "Nesting - Coaching - Birth Services", trainer: "Osama", sme: "Na", day: "Thursday", date: "03/04/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Nesting - Coaching -  Birth Services", trainer: "Osama", sme: "Na", day: "Friday", date: "04/04/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Overseas Treatments - Health Tourism - Complaint", trainer: "Osama", sme: "Na", day: "Sunday", date: "06/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Nesting - Death Services", trainer: "Osama", sme: "Na", day: "Monday", date: "07/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Tuesday", date: "08/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Wednesday", date: "09/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Thursday", date: "10/04/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Friday", date: "11/04/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - PHS HASANA System, NABIDH & Health froud", trainer: "Osama", sme: "Na", day: "Sunday", date: "13/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Monday", date: "14/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting - Services - PHS Insurance", trainer: "Osama", sme: "Na", day: "Tuesday", date: "15/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "4" },
+    { session: "Nesting - Services - PHS Insurance", trainer: "Osama", sme: "Na", day: "Wednesday", date: "16/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "4" },
+    { session: "Nesting - individual services & Corporate services", trainer: "Osama", sme: "Na", day: "Thursday", date: "17/04/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Nesting - individual services & Corporate services", trainer: "Osama", sme: "Na", day: "Friday", date: "18/04/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "4" },
+    { session: "Nesting - Coaching - MyTp NH Security Training", trainer: "Osama", sme: "Na", day: "Sunday", date: "20/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "4" },
+    { session: "Nesting - Coaching - QA & OP  Session", trainer: "Osama", sme: "Na", day: "Monday", date: "21/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "4" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Tuesday", date: "22/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Wednesday", date: "23/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Thursday", date: "24/04/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Friday", date: "25/04/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Sunday", date: "27/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Monday", date: "28/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Tuesday", date: "29/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Wednesday", date: "30/04/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Thursday", date: "01/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Friday", date: "02/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Sunday", date: "04/05/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Monday", date: "05/05/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Tuesday", date: "06/05/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Wednesday", date: "07/05/2025", time: "9:00AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Certifications R1", trainer: "Osama", sme: "Na", day: "Thursday", date: "08/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Friday", date: "09/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Sunday", date: "11/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Monday", date: "12/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Tuesday", date: "13/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Wednesday", date: "14/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Thursday", date: "15/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Friday", date: "16/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Sunday", date: "18/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Monday", date: "19/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Tuesday", date: "20/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Wednesday", date: "21/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Thursday", date: "22/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Friday", date: "23/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Sunday", date: "25/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Monday", date: "26/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Tuesday", date: "27/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Wednesday", date: "28/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting - Dispute Pending for Quality Feedback", trainer: "Osama", sme: "Na", day: "Thursday", date: "29/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Friday", date: "30/05/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Nesting", trainer: "Osama", sme: "Na", day: "Sunday", date: "01/06/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" },
+    { session: "Certifications R26", trainer: "Osama", sme: "Na", day: "Monday", date: "02/06/2025", time: "9:00AM - 6:00PM", method: "Nesting on site", duration: "0" }
+        // ... add 6 more rows for batch 84
+  ],
+  "86": [
+    { session: "HRS-HP", trainer: "Osama Zakaria", sme: "NA", day: "Tuesday", date: "20/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS-HP", trainer: "Osama Zakaria", sme: "NA", day: "Wednesday", date: "21/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS-HP", trainer: "Osama Zakaria", sme: "Ashraf", day: "Thursday", date: "22/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS-HF", trainer: "Osama Zakaria", sme: "Ashraf", day: "Friday", date: "23/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS-HF", trainer: "Osama Zakaria", sme: "Ashraf", day: "Sunday", date: "25/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS-HF", trainer: "Osama Zakaria", sme: "Ashraf", day: "Monday", date: "26/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Polices", topics: "Intro to HRS", trainer: "Osama Zakaria", sme: "Ashraf", day: "Tuesday", date: "27/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Overseas Treatment", topics: "Intro to HRS", trainer: "Osama Zakaria", sme: "Ashraf", day: "Wednesday", date: "28/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Assits collection", trainer: "Osama Zakaria", sme: "Ashraf", day: "Thursday", date: "29/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "HRS Scenarios", trainer: "Osama Zakaria", sme: "Ashraf", day: "Friday", date: "30/05/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Nabidh", trainer: "Osama Zakaria", sme: "Ashraf", day: "Sunday", date: "01/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Insurance", trainer: "Osama Zakaria", sme: "Ashraf", day: "Monday", date: "02/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Medical Education", trainer: "Osama Zakaria", sme: "Ashraf", day: "Tuesday", date: "03/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Birth & Death", trainer: "Osama Zakaria", sme: "Ashraf", day: "Wednesday", date: "04/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Public Health", trainer: "Osama Zakaria", sme: "Ashraf", day: "Thursday", date: "05/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "CC Toolkit", trainer: "Osama Zakaria", sme: "Ashraf", day: "Monday", date: "09/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "QA-Ops session", trainer: "Osama Zakaria", sme: "Ashraf", day: "Tuesday", date: "10/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "AI Training / New KB usage training", trainer: "Osama Zakaria", sme: "Ashraf", day: "Wednesday", date: "11/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "VOC", trainer: "Osama Zakaria", sme: "Ashraf", day: "Thursday", date: "12/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "MyTp NH Security Training ", trainer: "Osama Zakaria", sme: "Ashraf", day: "Friday", date: "13/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Mock calls - Final assissment", trainer: "Osama Zakaria", sme: "Ashraf", day: "Sunday", date: "15/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Monday", date: "16/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Tuesday", date: "17/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Wednesday", date: "18/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Thursday", date: "19/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Friday", date: "20/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Sunday", date: "22/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Monday", date: "23/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Tuesday", date: "24/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Wednesday", date: "25/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Nesting", trainer: "Osama Zakaria", sme: "Ashraf", day: "Thursday", date: "26/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Certification R1", trainer: "Osama Zakaria", sme: "Ashraf", day: "Friday", date: "27/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    { session: "Recap", trainer: "Osama Zakaria", sme: "Ashraf", day: "Sunday", date: "29/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Go live & Recap", trainer: "Osama Zakaria", sme: "Ashraf", day: "Monday", date: "30/06/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Recap", trainer: "Osama Zakaria", sme: "Ashraf", day: "Tuesday", date: "01/07/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "8" },
+    { session: "Certification R2", trainer: "Osama Zakaria", sme: "Ashraf", day: "Wednesday", date: "02/07/2025", time: "9:00 AM - 6:00PM", method: "MS Teams", duration: "0" },
+    // ... add more rows with 'sme'
+  ]
+};
+
+// 2. Render agenda rows for the selected batch
+function renderAgendaForBatch(batch) {
+  const tbody = document.querySelector('#agendaTableSection tbody');
+  tbody.innerHTML = "";
+  if (agendasByBatch[batch]) {
+    agendasByBatch[batch].forEach(row => {
+      const tr = document.createElement('tr');
+      tr.className = "border-b";
+      tr.innerHTML = `
+        <td class="px-4 py-2">${row.session}</td>
+        <td class="px-4 py-2">${row.trainer}</td>
+        <td class="px-4 py-2">${row.sme || ""}</td>
+        <td class="px-4 py-2">${row.day}</td>
+        <td class="px-4 py-2">${row.date}</td>
+        <td class="px-4 py-2">${row.time}</td>
+        <td class="px-4 py-2">${row.method}</td>
+        <td class="px-4 py-2">${row.duration}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  } else {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td colspan="8" class="px-4 py-2 text-center text-gray-400">No agenda for this batch.</td>`;
+    tbody.appendChild(tr);
+  }
+}
+
+// 3. When clicking agenda, show agenda section for the selected batch and render agenda
+document.getElementById('trainingAgendaOption').addEventListener('click', function(e) {
+  e.preventDefault();
+  const batch = document.getElementById('batchNumber').value;
+  renderAgendaForBatch(batch);
+  document.getElementById('agendaTableSection').classList.remove('hidden');
+  document.getElementById('traineesTableSection').classList.add('hidden');
+  document.getElementById('mainTitle').textContent = "Training Agenda - Batch " + batch;
+});
+
+// 4. When changing batch, if agenda section is visible, update agenda
+document.getElementById('batchNumber').addEventListener('change', function() {
+  const batch = this.value;
+  if (!document.getElementById('agendaTableSection').classList.contains('hidden')) {
+    renderAgendaForBatch(batch);
+    document.getElementById('mainTitle').textContent = "Training Agenda - Batch " + batch;
+  }
+});
+
+// Show/hide and update the total training hours widget when agenda is open
+// filepath: d:\training dashboard site\new-hire-training.html
+
+function getTotalTrainingHours(batch) {
+  if (!agendasByBatch[batch]) return 0;
+  // Sum all durations (as numbers, ignoring non-numeric or empty)
+  return agendasByBatch[batch]
+    .map(row => Number(row.duration) || 0)
+    .reduce((a, b) => a + b, 0);
+}
+
+// Show widget when agenda is open
+document.getElementById('trainingAgendaOption').addEventListener('click', function(e) {
+  const batch = document.getElementById('batchNumber').value;
+  const totalHours = getTotalTrainingHours(batch);
+  document.getElementById('totalTrainingHoursValue').textContent = totalHours;
+  document.getElementById('totalTrainingHoursWidget').classList.remove('hidden');
+});
+
+// Hide widget when returning to trainees list
+document.getElementById('traineesListOption').addEventListener('click', function(e) {
+  document.getElementById('totalTrainingHoursWidget').classList.add('hidden');
+});
+
+// Also update if batch is changed while agenda is open
+document.getElementById('batchNumber').addEventListener('change', function() {
+  if (!document.getElementById('agendaTableSection').classList.contains('hidden')) {
+    const batch = this.value;
+    const totalHours = getTotalTrainingHours(batch);
+    document.getElementById('totalTrainingHoursValue').textContent = totalHours;
+    document.getElementById('totalTrainingHoursWidget').classList.remove('hidden');
+  }
+});
+
+// Make the performance phase title and values changeable
+// filepath: d:\training dashboard site\new-hire-training.html
+
+// Example data for each phase (replace with your dynamic logic if needed)
+const performanceData = {
+  "0to30": { aht: "7:10", qa: "92%", csat: "85%", ans: "1200" },
+  "30to60": { aht: "6:45", qa: "94%", csat: "88%", ans: "1400" },
+  "60to90": { aht: "6:30", qa: "96%", csat: "90%", ans: "1600" }
+};
+
+function updatePerformancePhase(phase) {
+  const titleMap = {
+    "Nesting": "Nesting Performance",
+    "0to30": "0 to 30 Performance",
+    "30to60": "30 to 60 Performance",
+    "60to90": "60 to 90 Performance"
+  };
+  document.getElementById('performancePhaseTitle').textContent = titleMap[phase];
+  document.getElementById('perf0to30AHT').textContent = performanceData[phase].aht;
+  document.getElementById('perf0to30QA').textContent = performanceData[phase].qa;
+  document.getElementById('perf0to30CSAT').textContent = performanceData[phase].csat;
+  document.getElementById('perf0to30ANS').textContent = performanceData[phase].ans;
+}
+
+document.getElementById('performancePhase').addEventListener('change', function() {
+  updatePerformancePhase(this.value);
+});
+
+// Initial call
+updatePerformancePhase('0to30');
+  </script>
+</body>
+</html>

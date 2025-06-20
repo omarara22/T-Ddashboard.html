@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trainee Profile | DHA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-sans" style="background-color: #e6f5f3;">
+<!-- Tailwind CSS -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- Header -->
+<header class="bg-white shadow-md py-2 px-4 flex items-center justify-between sticky top-0 z-30">
+    <!-- Left Logo -->
+  <div class="flex items-center">
+    <img src="DG-logo.png" alt="DG-logo" class="h-10">
+  </div>
+  <!-- Navigation -->
+  <nav class="flex-1">
+    <ul class="flex gap-4 text-gray-700 font-medium justify-center items-center">
+      <li><a href="index.html" class="hover:text-[#009490] font-semibold">Training Overview</a></li>
+      <li class="relative" id="trainingDeliveryMenu">
+        <button type="button" id="trainingDeliveryBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Training Delivery
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="trainingDeliveryDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="new-hire-training.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">New Hire Training</a></li>
+          <li><a href="continues-education.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Continues Education</a></li>
+          <li><a href="product-knowledge.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">PKT</a></li>
+        </ul>
+      </li>
+      <li><a href="training-initiatives.html" class="hover:text-[#009490] font-bold">Training Initiatives</a></li>
+      <li><a href="training-analysis.html" class="hover:text-[#009490]">TNA</a></li>
+      <li><a href="trainee profile.html" class="hover:text-[#009490]">Trainee Profile</a></li>
+      <li><a href="training forms.html" class="hover:text-[#009490]">Training Forms</a></li>
+      <li class="relative" id="trainingCurriculumsMenu">
+        <button type="button" id="trainingCurriculumsBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Training Curriculums
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="trainingCurriculumsDropdown" class="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="#" class="block px-4 py-2 font-semibold text-gray-700 cursor-default">Soft Skills (GDCCS)</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Product Knowledge</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Operating Systems</a></li>
+        </ul>
+      </li>
+      <li class="relative" id="knowledgeManagementMenu">
+        <button type="button" id="knowledgeManagementBtn" class="flex items-center focus:outline-none hover:text-[#009490]">
+          Knowledge Management
+          <svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul id="knowledgeManagementDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+          <li><a href="update-tracker.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Update Tracker</a></li>
+          <li><a href="content-creation.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Content Creation</a></li>
+          <li><a href="knowledge-hub-index.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">Knowledge Hub Index</a></li>
+          <li><a href="bo-meeting-tracker.html" class="block px-4 py-2 hover:bg-gray-100 hover:text-[#009490]">BO Meeting Tracker</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+    <!-- Right Logo -->
+  <div class="flex items-center">
+    <img src="DHA-logo.svg" alt="Green Logo" class="h-10">
+  </div>
+</header>
+
+  <!-- Main Section -->
+  <main class="p-6">
+    <div id="directorySection">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-semibold text-gray-800">Select a Trainee</h2>
+        <div class="flex gap-2 items-center">
+          <input type="text" id="searchInput" placeholder="Search by name or department" class="border px-3 py-2 rounded w-64 text-sm" oninput="filterTrainees()">
+          <button onclick="toggleForm()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow text-sm">+ Add New Trainee</button>
+        </div>
+      </div>
+
+      <div id="newTraineeForm" class="bg-white p-6 rounded-xl shadow-md mb-8 hidden">
+        <h3 class="text-lg font-semibold text-gray-700 mb-4">Create New Trainee Profile</h3>
+        <form id="traineeForm" onsubmit="event.preventDefault(); addTrainee();">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" id="traineeName" placeholder="Full Name" class="border rounded px-3 py-2" required>
+            <input type="text" id="traineeDept" placeholder="Department" class="border rounded px-3 py-2" required>
+            <input type="file" id="traineeImage" accept="image/*" class="border rounded px-3 py-2 bg-white" required>
+            <input type="text" id="traineeEmail" placeholder="Email" class="border rounded px-3 py-2" required>
+            <input type="text" id="traineeJoin" placeholder="Join Date" class="border rounded px-3 py-2" required>
+            <input type="text" id="traineeID" placeholder="Employee ID" class="border rounded px-3 py-2" required>
+            <input type="text" id="traineeBio" placeholder="Short Bio / Description" class="border rounded px-3 py-2" required>
+          </div>
+          <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">Save Trainee</button>
+        </form>
+      </div>
+
+      <!-- Overview Section aligned left and widgets same size as trainee cards -->
+      <div id="traineeOverview" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8 justify-start">
+        <div class="bg-white rounded-xl p-4 shadow flex flex-col items-center w-80">
+          <div class="text-2xl text-gray-500 mb-1">Total Trainees</div>
+          <div id="totalTrainees" class="text-9xl font-bold text-green-700">--</div>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow flex flex-col items-center w-80">
+          <div class="text-2xl text-gray-500 mb-1">Gender</div>
+          <div class="flex gap-4 mb-2">
+            <span class="text-green-700 font-bold">M: <span id="maleCount">--</span></span>
+            <span class="text-pink-700 font-bold">F: <span id="femaleCount">--</span></span>
+          </div>
+          <canvas id="genderPie" width="50" height="40" style="display:block"></canvas>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow flex flex-col items-center w-80">
+          <div class="text-2xl text-gray-500 mb-1">Marital Status</div>
+          <div class="flex gap-4 mb-2">
+            <span class="text-indigo-700 font-bold">Married: <span id="marriedCount">--</span></span>
+            <span class="text-yellow-700 font-bold">Single: <span id="singleCount">--</span></span>
+          </div>
+          <canvas id="maritalPie" width="64" height="64" style="display:block"></canvas>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow flex flex-col items-center w-80">
+          <div class="text-2xl text-gray-500 mb-2">Nationalities</div>
+          <canvas id="nationalityPie" width="64" height="64" style="display:block"></canvas>
+        </div>
+      </div>
+
+      <!-- Add a Batch filter dropdown above the overview widgets -->
+      <div class="mb-4 flex flex-wrap items-center gap-4">
+        <label for="batchFilter" class="font-semibold text-gray-700">Filter by Batch:</label>
+        <select id="batchFilter" class="border rounded px-2 py-1">
+          <option value="all">All</option>
+          <option value="0">0</option>
+          <option value="84">84</option>
+          <option value="85">85</option>
+          <option value="86">86</option>
+        </select>
+      </div>
+
+      <div id="traineeGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Dynamic Cards -->
+      </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div id="profileSection" class="hidden">
+      <div class="flex flex-col md:flex-row items-start max-w-4xl gap-6 ml-0 md:ml-8">
+        <!-- Details Box (left) -->
+        <div class="bg-white p-6 rounded-xl shadow-md w-full md:w-1/2 text-left">
+          <img id="profileImage" src="" alt="Profile" class="w-32 h-32 rounded-full border mb-4">
+          <h3 id="profileName" class="text-xl font-bold text-gray-800"></h3>
+          <p id="profileDept" class="text-sm text-gray-600"></p>
+          <p id="profileID" class="text-sm text-gray-600"></p>
+          <p id="profileBatch" class="text-sm text-gray-600"></p>
+          <p id="profileEmail" class="text-sm text-gray-600"></p>
+          <p id="profileJoin" class="text-sm text-gray-600"></p>
+          <p id="profileBio" class="text-sm text-gray-700 mt-4"></p>
+        </div>
+        <!-- 8 Widgets (right) -->
+        <div class="grid grid-cols-2 gap-4 w-full md:w-1/2">
+          <div class="bg-white rounded-xl p-4 shadow text-center">
+            <div class="text-xs text-gray-500 mb-1">QA %</div>
+            <div id="profileQA" class="text-xl font-bold text-yellow-700">--</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow text-center">
+            <div class="text-xs text-gray-500 mb-1">CSAT %</div>
+            <div id="profileCSAT" class="text-xl font-bold text-green-700">--</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow text-center">
+            <div class="text-xs text-gray-500 mb-1">AHT</div>
+            <div id="profileAHT" class="text-xl font-bold text-blue-700">--</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow text-center">
+            <div class="text-xs text-gray-500 mb-1">ANS</div>
+            <div id="profileANS" class="text-xl font-bold text-purple-700">--</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow text-center">
+            <div class="text-xs text-gray-500 mb-1">Adherance %</div>
+            <div id="profileAdherance" class="text-xl font-bold text-pink-700">--</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow text-center">
+            <div class="text-xs text-gray-500 mb-1">Working Days</div>
+            <div id="profileWorkingDays" class="text-xl font-bold text-gray-700">--</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow text-center">
+            <div class="text-xs text-gray-500 mb-1">Leaves</div>
+            <div id="profileLeaves" class="text-xl font-bold text-red-700">--</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow text-center">
+            <div class="text-xs text-gray-500 mb-1">Absent</div>
+            <div id="profileAbsent" class="text-xl font-bold text-indigo-700">--</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function toggleForm() {
+      const form = document.getElementById('newTraineeForm');
+      form.classList.toggle('hidden');
+    }
+ document.addEventListener('click', function (e) {
+    const menuButtons = [
+      { btn: 'trainingDeliveryBtn', dropdown: 'trainingDeliveryDropdown' },
+      { btn: 'trainingCurriculumsBtn', dropdown: 'trainingCurriculumsDropdown' },
+      { btn: 'knowledgeManagementBtn', dropdown: 'knowledgeManagementDropdown' }
+    ];
+
+    menuButtons.forEach(({ btn, dropdown }) => {
+      const button = document.getElementById(btn);
+      const menu = document.getElementById(dropdown);
+      if (button && menu && button.contains(e.target)) {
+        menu.classList.toggle('hidden');
+        e.stopPropagation();
+      } else if (menu && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  });
+    // Replace the addTrainee function with this version to handle image upload
+    function addTrainee() {
+      const name = document.getElementById('traineeName').value;
+      const dept = document.getElementById('traineeDept').value;
+      const imageInput = document.getElementById('traineeImage');
+      const email = document.getElementById('traineeEmail').value;
+      const join = document.getElementById('traineeJoin').value;
+      const empID = document.getElementById('traineeID').value;
+      const bio = document.getElementById('traineeBio').value;
+      const batch = "86"; // Default batch
+
+      if (imageInput.files && imageInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageSrc = e.target.result;
+          const grid = document.getElementById('traineeGrid');
+          const card = document.createElement('div');
+          card.className = "bg-white rounded-xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition cursor-pointer";
+          card.innerHTML = `
+            <img src="${imageSrc}" alt="${name}" class="w-24 h-24 rounded-full border mb-3">
+            <h3 class="text-base font-semibold text-gray-800">${name}</h3>
+            <p class="text-sm text-gray-600">${dept}</p>
+          `;
+          card.onclick = () => showProfile(name, dept, imageSrc, email, join, empID, bio, '--', '--', '--', '--', '--', '--', '--', '--', batch);
+          grid.appendChild(card);
+
+          const newTrainee = {
+            name, dept, image: imageSrc, email, join, empID, bio, Batch: batch,
+            gender: '--', marital: '--', nationality: '--'
+          };
+          let savedTrainees = JSON.parse(localStorage.getItem('trainees') || '[]');
+          savedTrainees.push(newTrainee);
+          localStorage.setItem('trainees', JSON.stringify(savedTrainees));
+
+          document.getElementById('traineeForm').reset();
+          toggleForm();
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+      }
+    }
+
+    function showProfile(
+      name, dept, image, email, join, empID, bio,
+      csat = '90%', aht = '-250', qa = '98%', ans = '96416',
+      adherance = '100%', workingDays = '1270', leaves = '150', absent = '0',
+      batch = '86'
+    ) {
+      document.getElementById('directorySection').classList.add('hidden');
+      document.getElementById('profileSection').classList.remove('hidden');
+      document.getElementById('profileName').textContent = name;
+      document.getElementById('profileDept').textContent = dept;
+      document.getElementById('profileImage').src = image;
+      document.getElementById('profileEmail').textContent = `Email: ${email}`;
+      document.getElementById('profileJoin').textContent = `Join Date: ${join}`;
+      document.getElementById('profileID').textContent = `Employee ID: ${empID}`;
+      document.getElementById('profileBatch').textContent = `Batch: ${batch}`;
+      document.getElementById('profileBio').textContent = bio;
+      document.getElementById('profileCSAT').textContent = csat;
+      document.getElementById('profileAHT').textContent = aht;
+      document.getElementById('profileQA').textContent = qa;
+      document.getElementById('profileANS').textContent = ans;
+      document.getElementById('profileAdherance').textContent = adherance;
+      document.getElementById('profileWorkingDays').textContent = workingDays;
+      document.getElementById('profileLeaves').textContent = leaves;
+      document.getElementById('profileAbsent').textContent = absent;
+    }
+
+    function showDirectory() {
+      document.getElementById('profileSection').classList.add('hidden');
+      document.getElementById('directorySection').classList.remove('hidden');
+    }
+
+    function filterTrainees() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const cards = document.querySelectorAll('#traineeGrid > div');
+  cards.forEach(card => {
+    const name = card.querySelector('h3').textContent.toLowerCase();
+    const dept = card.querySelector('p').textContent.toLowerCase();
+    card.style.display = name.includes(input) || dept.includes(input) ? 'flex' : 'none';
+  });
+}
+
+    const initialTrainees = [
+  {
+    "name": "El Qarmoty El Balouty El Qarmoty",
+    "dept": "Mango Merchant",
+    "image": "Qarmat.png",
+    "email": "tp_arazzaqalteany@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "0",
+    "Batch": "0",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Adil Shakal",
+    "dept": "El Naho specialist",
+    "image": "adil.jpg",
+    "email": "tp_arazzaqalteany@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "0",
+    "Batch": "0",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Bahgat Saber",
+    "dept": "Soft Skills Trainer",
+    "image": "Bahgat.jpg",
+    "email": "tp_arazzaqalteany@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "0",
+    "Batch": "0",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Jordanian"
+  }, 
+  {
+    "name": "Assel Ayman Abdel Razzaq Al Teany",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_arazzaqalteany@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005294",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Jordanian"
+  },
+  {
+    "name": "Eiman Hassan Ali Abdalrazig",
+    "dept": "Customer Service Representative",
+    "image": "eman.png",
+    "email": "tp_eabdalrazig@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005285",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Sudan"
+  },
+  {
+    "name": "Fares Safar Doshanbeh Khawri",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_fdoshanbehkhawri@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005280",
+    "Batch": "84",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Comoros"
+  },
+  {
+    "name": "Faten Hesham Mohamed Mamdouh Abdoelnaga Elwakeel",
+    "dept": "Customer Service Representative",
+    "image": "faten.png",
+    "email": "tp_felwakeel@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005286",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "married",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Hend Elsayed Saber Shehata",
+    "dept": "Customer Service Representative",
+    "image": "hend.png",
+    "email": "tp_hshehata@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005287",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "married",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Hesham Hassan Abdelrahman Awad Abdelaziz",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_habdelaziz@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005288",
+    "Batch": "84",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Leen Ayman Abdel Razzaq Al Teany",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_lrazzaqalteany@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005289",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "married",
+    "nationality": "Jordanian"
+  },
+  {
+    "name": "Nouran Mohamed Abdelwahab Emam Shady",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_nemamshady@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005290",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Reem Khalil Ali Al Qassab",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_ralqassab@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005281",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Comoros"
+  },
+  {
+    "name": "Safaa Ali Ahmed Hamid",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_sahmedhamid@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005291",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Sudan"
+  },
+  {
+    "name": "Sarra Elamin Elhaj ElKhider",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_selhajelkhider@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005292",
+    "Batch": "84",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Sudan"
+  },
+  {
+    "name": "Youssef Saeed Ahmad Al Jasmi",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_yahmadaljasmi@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005282",
+    "Batch": "84",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Comoros"
+  },
+  {
+    "name": "Youssif Sherif Hassan Abdelmoula",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_yhassanabdelmoula@dha.gov.ae",
+    "join": "02/10/2024",
+    "empID": "IUE005293",
+    "Batch": "84",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Ahmed Iqbal Hussain\u00a0",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_ahussain@dha.gov.ae",
+    "join": "17/02/2025",
+    "empID": "IUE005546",
+    "Batch": "85",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Pakistani"
+  },
+  {
+    "name": "Huda Ibrahim Nasser Hussein",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_hhussein@dha.gov.ae",
+    "join": "17/02/2025",
+    "empID": "IUE005545",
+    "Batch": "85",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Comoros"
+  },
+  {
+    "name": "Mariam Ibrahim Ahmed Ahmed Khamis",
+    "dept": "Customer Service Representative",
+    "image": "mariam.png",
+    "email": "tp_mkhamis@dha.gov.ae",
+    "join": "17/02/2025",
+    "empID": "IUE005557",
+    "Batch": "85",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Marwan Mustafa Muhamed Elnoby Ahmed",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_marahmed@dha.gov.ae",
+    "join": "17/02/2025",
+    "empID": "IUE005558",
+    "Batch": "85",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Mohamed Usama Ahmed Mohamed Hassan Haggy",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_mhaggy@dha.gov.ae",
+    "join": "17/02/2025",
+    "empID": "IUE005548",
+    "Batch": "85",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Muhammad Saad",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_msaad@dha.gov.ae",
+    "join": "17/02/2025",
+    "empID": "IUE005547",
+    "Batch": "85",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Pakistani"
+  },
+  {
+    "name": "Rawya Abdulwahab Abdulaal Basheir",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_rbasheir@dha.gov.ae",
+    "join": "17/02/2025",
+    "empID": "IUE005549",
+    "Batch": "85",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Sudan"
+  },
+  {
+    "name": "Chaima Tka",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_ctka@dha.gov",
+    "join": "19/05/2025",
+    "empID": "IUE005663",
+    "Batch": "86",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Tunisia"
+  },
+  {
+    "name": "Ebithal Nasraldeen Ahmed Mohamed",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_ebmohamed@dha.gov.ae",
+    "join": "19/05/2025",
+    "empID": "IUE005664",
+    "Batch": "86",
+    "gender": "female",
+    "marital": "married",
+    "nationality": "Sudan"
+  },
+  {
+    "name": "Esraa Hamza ",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_ehamza@dha.gov.ae",
+    "join": "19/05/2025",
+    "empID": "IUE005662",
+    "Batch": "86",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Sudan"
+  },
+  {
+    "name": "Hawra Ibrahim Nasser Hussein",
+    "dept": "Customer Service Representative",
+    "image": "female.jpg",
+    "email": "tp_hahussein@dha.gov.ae",
+    "join": "19/05/2025",
+    "empID": "IUE005668",
+    "Batch": "86",
+    "gender": "female",
+    "marital": "single",
+    "nationality": "Comoros"
+  },
+  {
+    "name": "Mohamed Habib Barakat Mohamed",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_mohamohamed@dha.gov.ae",
+    "join": "19/05/2025",
+    "empID": "IUE005665",
+    "Batch": "86",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Sudan"
+  },
+  {
+    "name": "Mohamed Raafat Amen Elbamby",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_melbamby@dha.gov.ae",
+    "join": "19/05/2025",
+    "empID": "IUE005666",
+    "Batch": "86",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Egypt"
+  },
+  {
+    "name": "Mostafa Abdelrahman Saad Mohamed Shaaban ",
+    "dept": "Customer Service Representative",
+    "image": "male.jpg",
+    "email": "tp_mshaaban@dha.gov.ae",
+    "join": "19/05/2025",
+    "empID": "IUE005667",
+    "Batch": "86",
+    "gender": "male",
+    "marital": "single",
+    "nationality": "Egypt"
+  }
+];
+
+    // Add filtering logic for batch
+let filteredTrainees = initialTrainees;
+
+document.getElementById('batchFilter').addEventListener('change', function() {
+  const selected = this.value;
+  if (selected === "all") {
+    filteredTrainees = initialTrainees;
+  } else {
+    filteredTrainees = initialTrainees.filter(t => t.Batch == selected);
+  }
+  renderTrainees();
+  updateTraineeOverview();
+});
+
+function renderTrainees() {
+  const grid = document.getElementById('traineeGrid');
+  grid.innerHTML = '';
+  filteredTrainees.forEach(t => {
+    const card = document.createElement('div');
+    card.className = "bg-white rounded-xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition cursor-pointer";
+    card.innerHTML = `
+      <img src="${t.image}" alt="${t.name}" class="w-24 h-24 rounded-full border mb-3">
+      <h3 class="text-base font-semibold text-gray-800">${t.name}</h3>
+      <p class="text-sm text-gray-600">${t.dept}</p>
+    `;
+    card.onclick = () => showProfile(
+      t.name, t.dept, t.image, t.email, t.join, t.empID, t.bio,
+      t.csat, t.aht, t.qa, t.ans,
+      t.adherance, t.workingDays, t.leaves, t.absent,
+      t.Batch
+    );
+    grid.appendChild(card);
+  });
+}
+
+// Overview and charts
+    function updateTraineeOverview() {
+      const trainees = filteredTrainees;
+      // Total
+      document.getElementById('totalTrainees').textContent = trainees.length;
+      // Gender
+      const male = trainees.filter(t => t.gender === 'male').length;
+      const female = trainees.filter(t => t.gender === 'female').length;
+      document.getElementById('maleCount').textContent = male;
+      document.getElementById('femaleCount').textContent = female;
+      // Marital Status
+      const married = trainees.filter(t => t.marital === 'married').length;
+      const single = trainees.filter(t => t.marital === 'single').length;
+      document.getElementById('marriedCount').textContent = married;
+      document.getElementById('singleCount').textContent = single;
+
+      // Gender Pie (green colors)
+      const genderLabels = ['Male', 'Female'];
+      const genderData = [male, female];
+      const genderColors = ['#009490', '#b9f5e2'];
+      const genderCtx = document.getElementById('genderPie').getContext('2d');
+      if (window.genderPieChart) window.genderPieChart.destroy();
+      window.genderPieChart = new Chart(genderCtx, {
+        type: 'pie',
+        data: {
+          labels: genderLabels.map((g, i) => {
+            const percent = genderData[i] && trainees.length ? ((genderData[i] / trainees.length) * 100).toFixed(0) : 0;
+            return `${g} (${percent}%)`;
+          }),
+          datasets: [{
+            data: genderData,
+            backgroundColor: genderColors,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          plugins: { legend: { display: true, position: 'bottom' } }
+        }
+      });
+
+      // Marital Status Pie (green colors)
+      const maritalLabels = ['Married', 'Single'];
+      const maritalData = [married, single];
+      const maritalColors = ['#009490', '#b9f5e2'];
+      const maritalCtx = document.getElementById('maritalPie').getContext('2d');
+      if (window.maritalPieChart) window.maritalPieChart.destroy();
+      window.maritalPieChart = new Chart(maritalCtx, {
+        type: 'pie',
+        data: {
+          labels: maritalLabels.map((m, i) => {
+            const percent = maritalData[i] && trainees.length ? ((maritalData[i] / trainees.length) * 100).toFixed(0) : 0;
+            return `${m} (${percent}%)`;
+          }),
+          datasets: [{
+            data: maritalData,
+            backgroundColor: maritalColors,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          plugins: { legend: { display: true, position: 'bottom' } }
+        }
+      });
+
+      // Nationality Bar (Cluster) Chart (green colors)
+      const nationalityCounts = {};
+      trainees.forEach(t => {
+        nationalityCounts[t.nationality] = (nationalityCounts[t.nationality] || 0) + 1;
+      });
+      const labels = Object.keys(nationalityCounts);
+      const data = Object.values(nationalityCounts);
+      const total = data.reduce((a, b) => a + b, 0);
+      const colors = Array(labels.length).fill().map((_, i) =>
+        i % 2 === 0 ? "#009490" : "#b9f5e2"
+      );
+      const ctx = document.getElementById('nationalityPie').getContext('2d');
+      if (window.nationalityPieChart) window.nationalityPieChart.destroy();
+      window.nationalityPieChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Trainees',
+            data: data,
+            backgroundColor: colors,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const percent = ((context.raw / total) * 100).toFixed(0);
+                  return `${context.raw} (${percent}%)`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              ticks: { precision:0 }
+            }
+          }
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+  let stored = JSON.parse(localStorage.getItem('trainees') || '[]');
+  // Merge with initialTrainees, but avoid duplicates by empID
+  const allTrainees = [...initialTrainees, ...stored.filter(
+    t => !initialTrainees.some(init => init.empID === t.empID)
+  )];
+  filteredTrainees = allTrainees;
+  renderTrainees();
+  updateTraineeOverview();
+});
+
+    // Initial render
+    renderTrainees();
+    updateTraineeOverview();
+  </script>
+</body>
+</html>
